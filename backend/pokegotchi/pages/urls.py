@@ -22,6 +22,8 @@ urlpatterns = [
     path('', views.index),
     path('api/pokemon', views.PokemonList.as_view()),
     path('api/pokemon/<int:pk>', views.PokemonDetails.as_view()),
+    path('api/user', views.UserList.as_view()),
+    path('api/user/<int:pk>', views.UserDetails.as_view()),
     path(
         "swagger/",
         schema_view.with_ui("swagger", cache_timeout=0),

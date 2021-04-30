@@ -3,7 +3,8 @@ from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
-    pass
+    def __str__(self):
+        return f'{self.name} user_id:{self.id}'
 
 # Create your models here.
 class Pokemon(models.Model):
