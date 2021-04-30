@@ -37,13 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
+    
     #Extra Apps
     'rest_framework',
+    'rest_framework_swagger',
+    'drf_yasg',
 
     #Own Apps
     'pages',
+    #'pokegotchi'
+    #'accounts',
 ]
+
+REST_FRAMEWORK = {
+  'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema'
+}
+
+AUTH_USER_MODEL = 'pages.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -129,3 +139,6 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#AUTH_USER_MODEL = 'pokegotchi.User'
