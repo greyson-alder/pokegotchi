@@ -1,0 +1,24 @@
+[
+    {
+        "model": "pages.pokemon",
+        "pk": 1,
+        "fields": {
+            "name": "Charlie",
+            "age": 0,
+            "pokemon": "Bulbasaur",
+            "happiness": 100,
+            "hunger": 100
+        }
+    },
+    {
+        "model": "pages.pokemon",
+        "pk": 2,
+        "fields": {
+            "name": "Bob",
+            "age": 0,
+            "pokemon": "Charmander",
+            "happiness": 100,
+            "hunger": 100
+        }
+    }
+]
