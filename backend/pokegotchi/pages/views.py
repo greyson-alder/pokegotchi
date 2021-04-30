@@ -21,3 +21,19 @@ class PokemonList(APIView):
         pokemon = Pokemon.objects.all()
         serializer = PokemonSerializer(pokemon, many=True)
         return Response(serializer.data)
+
+class PokemonDetails(APIView):
+    """
+    Lists details about a Pokemon
+    """
+
+    def get_pokemon(self, pk):
+        try:
+            return Pokemon.objects.get(pk=pk)
+        except Pokemon.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        pokemon = self.get_pokemon(pk)
+        serializer = PokemonSerializer(pokemon)
+        return Response(serializer.data)
