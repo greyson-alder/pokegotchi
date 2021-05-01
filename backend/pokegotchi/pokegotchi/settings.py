@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'allauth',
     'allauth.account',
+    'corsheaders',
 
     #Own Apps
     'pages',
@@ -64,6 +65,7 @@ AUTH_USER_MODEL = 'pages.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -147,6 +149,10 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-#AUTH_USER_MODEL = 'pokegotchi.User'
+AUTH_USER_MODEL = 'pages.User'
 
 SITE_ID = 1
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+]
