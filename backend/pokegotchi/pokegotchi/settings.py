@@ -37,11 +37,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     #Extra Apps
     'rest_framework',
     'rest_framework_swagger',
+    'rest_framework.authtoken',
     'drf_yasg',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'allauth',
+    'allauth.account',
 
     #Own Apps
     'pages',
@@ -142,3 +148,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 #AUTH_USER_MODEL = 'pokegotchi.User'
+
+SITE_ID = 1
