@@ -11,6 +11,7 @@ class PokemonSerializer(serializers.ModelSerializer):
             'pokemon',
             'happiness',
             'hunger',
+            'user'
         )
 
 class UserSerializer(serializers.ModelSerializer):
