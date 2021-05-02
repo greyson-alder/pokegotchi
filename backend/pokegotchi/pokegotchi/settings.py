@@ -60,7 +60,12 @@ REST_FRAMEWORK = {
   'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
   'DEFAULT_AUTHENTICATION_CLASSES': (
         'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
-    )
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+    'rest_framework.parsers.JSONParser',
+    'rest_framework.parsers.FormParser',
+    'rest_framework.parsers.MultiPartParser',
+)
 }
 
 REST_USE_JWT = True
@@ -68,6 +73,10 @@ JWT_AUTH_COOKIE = 'my-app-auth'
 JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
 
 AUTH_USER_MODEL = 'pages.User'
+
+SWAGGER_SETTINGS = {
+    'JSON_EDITOR':True,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

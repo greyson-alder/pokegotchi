@@ -6,6 +6,7 @@ class PokemonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pokemon
         fields = (
+            #'pokemon_id',
             'name',
             'age',
             'pokemon',
