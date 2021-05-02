@@ -44,3 +44,9 @@ class PokemonDetails(APIView):
         pokemon = self.get_pokemon(pk)
         serializer = PokemonSerializer(pokemon)
         return Response(serializer.data)
+
+class TestingData(APIView):
+
+    def get(self, request, format=None):
+        testData = "Hello Everyone!"
+        return Response(testData)
