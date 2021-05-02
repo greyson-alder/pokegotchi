@@ -23,10 +23,24 @@ schema_view = get_schema_view(
     #permission_classes=(permissions.AllowAny,),
 )
 
+pokemon_list = views.PokemonList.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+
+pokemon_detail = views.PokemonDetails.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy',
+})
+
 urlpatterns = [
     path('', views.index),
-    path('api/pokemon', views.PokemonList.as_view()),
-    path('api/pokemon/<int:pk>', views.PokemonDetails.as_view()),
+    #path('api/pokemon', views.PokemonList.as_view()),
+    path('api/pokemon', pokemon_list),
+    #path('api/pokemon/<int:pk>', views.PokemonDetails.as_view()),
+    path('api/pokemon/<int:pk>', pokemon_detail),
     path('api/user', views.UserList.as_view()),
     path('api/user/<int:pk>', views.UserDetails.as_view()),
     path(
