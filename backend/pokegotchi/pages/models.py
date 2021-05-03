@@ -20,3 +20,11 @@ class Pokemon(models.Model):
 
     def __str__(self):
         return f'{self.name} is a {self.pokemon}'
+    
+    def add_to_hunger(self, amount):
+        self.hunger += amount
+        return self.hunger
+
+    def add_to_happiness(self, amount):
+        self.happiness += amount
+        return self.happiness
