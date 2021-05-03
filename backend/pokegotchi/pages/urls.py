@@ -35,12 +35,22 @@ pokemon_detail = views.PokemonDetails.as_view({
     'delete': 'destroy',
 })
 
+pokemon_hunger = views.PokemonDetails.as_view({
+    'post': 'add_hunger',
+})
+
+pokemon_happiness = views.PokemonDetails.as_view({
+    'post': 'add_happiness',
+})
+
 urlpatterns = [
     path('', views.index),
     #path('api/pokemon', views.PokemonList.as_view()),
     path('api/pokemon', pokemon_list),
     #path('api/pokemon/<int:pk>', views.PokemonDetails.as_view()),
     path('api/pokemon/<int:pk>', pokemon_detail),
+    path('api/pokemon/<int:pk>/hunger/', pokemon_hunger),
+    path('api/pokemon/<int:pk>/happiness/', pokemon_happiness),
     path('api/user', views.UserList.as_view()),
     path('api/user/<int:pk>', views.UserDetails.as_view()),
     path(
