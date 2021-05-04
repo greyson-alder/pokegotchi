@@ -11,11 +11,20 @@ class User(AbstractUser):
 
 # Create your models here.
 class Pokemon(models.Model):
+    BULBASAUR = 'Bulbasaur'
+    SQUIRTLE =  'Squirtle'
+    CHARMANDER = 'Charmander'
+    POKEMON = [
+        (BULBASAUR, 'Bulbasaur'),
+        (SQUIRTLE, 'Squirtle'),
+        (CHARMANDER, 'Charmander'),
+    ]
+
     pokemon_id=models.IntegerField(primary_key=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     name = models.CharField(max_length=200, null=True)
     age = models.DecimalField(decimal_places=2, max_digits=10, default=0)
-    pokemon = models.CharField(max_length=200, default="Pikachu")
+    pokemon = models.CharField(max_length=200, choices=POKEMON, default=BULBASAUR)
     happiness = models.DecimalField(decimal_places=2, max_digits=10, default=100)
     hunger = models.DecimalField(decimal_places=2, max_digits=10, default=100)
     func_time = models.DateTimeField(default=datetime.now, blank=True)
