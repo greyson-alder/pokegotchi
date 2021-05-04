@@ -5,13 +5,13 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
   
-  const fetchPokemon = async () => {
+  const updatePokemon = async () => {
     fetch("http://localhost:8000/gameupdate")
     .then(response => response.json())
     .then(data => console.log(data))
   }
 
-  //window.setInterval(fetchPokemon, 10000)
+  //window.setInterval(updatePokemon, 10000)
 
   
 
@@ -33,9 +33,9 @@ function App() {
         <p>Game Page</p>
       </Route>
       <div className="App">
-        <button onClick={fetchPokemon}>Click Me!</button>
         <div>Pokemon Data:
           <PokemonData />
+          <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
     </Router>

@@ -23,8 +23,9 @@ const PokemonData = () => {
                 <li>Age: {pokemonData.age}</li>
                 <li>Pokemon: {pokemonData.pokemon}</li>
                 <li>Happiness: {pokemonData.happiness}</li>
-                <li>Hunger: {pokemonData.Hunger}</li>
+                <li>Hunger: {pokemonData.hunger}</li>
                 <li>funct_time: {pokemonData.func_time}</li>
+                <li>alive: {String(pokemonData.alive)}</li>
             </ul>
              
         </div>

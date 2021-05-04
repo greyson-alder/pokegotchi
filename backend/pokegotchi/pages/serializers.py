@@ -15,6 +15,7 @@ class PokemonSerializer(serializers.ModelSerializer):
             'hunger',
             'user',
             'func_time',
+            'alive',
         )
 
     def get_return_pokemon_id(self, obj):
