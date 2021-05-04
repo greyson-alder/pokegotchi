@@ -2,6 +2,9 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import PokemonData from "./components/pokemondata/PokemonData"
 import Gameset from "./components/gameset/Gameset"
+import Footer from "./components/Footer"
+import About from "./pages/About"
+import LandingPage from "./pages/LandingPage"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -37,7 +40,7 @@ function App() {
   return (
     <Router>
       <Route path='/' exact>
-        <p>Landing Page</p>
+        <LandingPage/>
       </Route>
       <Route path='/create_account' exact>
         <p>Create Account Page</p>
@@ -46,7 +49,7 @@ function App() {
         <p>Log In Page</p>
       </Route>
       <Route path='/about' exact>
-        <p>About Page</p>
+        <About/>
       </Route>
       <Route path='/play' exact>
         <p>Game Page</p>
@@ -58,6 +61,8 @@ function App() {
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
+     
+      <Footer  className="Footer"/>
     </Router>
   );
 }

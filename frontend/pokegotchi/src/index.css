@@ -21,3 +21,91 @@ code {
 #root {
   width: 100%;
 }
+
+/*Footer*/
+
+.footer-brown {
+  background-color: saddlebrown;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}
+
+/*Landing Page*/
+
+.landingPage {
+  background-color: khaki;
+}
+
+.spacerLandingTop {
+  height: 20vh;
+}
+
+.landingTitle {
+  background-color: white;
+  border-top-style: solid;
+  border-top-color: gainsboro;
+  border-top-width: 1vh;
+  border-bottom-style:solid;
+  border-bottom-color: gainsboro;
+  border-bottom-width: 1vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3%;
+  padding-bottom: 3%;
+}
+
+.topTitle {
+  font-size:6vh;
+}
+
+.bottomTitle {
+  font-size: 8vh;
+}
+
+.landingButton {
+  background-color: white;
+  border-style: solid;
+  border-color: black;
+  border-width: 0.75vh;
+  height: 8vh;
+  width: 15vw;
+  font-size: 3vh;
+  margin: 2vh;
+  cursor: pointer;
+}
+
+.landingButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*About Page*/
+
+.aboutPage {
+  background-color: khaki;
+}
+
+.aboutTitle {
+  font-size: 8vh;
+  text-align: center;
+}
+
+.aboutText {
+  background-color: white;
+  height: 46vh;
+}
+
+.aboutText p{
+  font-size: 5vh;
+}
+
+.aboutSpacer {
+  height: 20vh;
+}
+
+.backButton {
+  background-color: white;
+}
