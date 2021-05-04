@@ -25,10 +25,10 @@ function App() {
       <Route path='/log_in' exact>
         <p>Log In Page</p>
       </Route>
-      <Route path='/about'>
+      <Route path='/about' exact>
         <p>About Page</p>
       </Route>
-      <Route>
+      <Route path='/play' exact>
         <p>Game Page</p>
       </Route>
       <div className="App">
