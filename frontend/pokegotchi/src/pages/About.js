@@ -5,10 +5,17 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
     return (
-        <div>
-            <Link to='/'><Button text="Back"/></Link>
-            <Title title="About"></Title>
-            <p>Some text about how this is a group project. Pokemon tamagotchi crossover. Our names</p>
+        <div className="aboutPage">
+            <Link to='/'><Button text="Back" className="backButton"/></Link>
+            <Title title="About" className="aboutTitle"></Title>
+            <div className="aboutText">
+                <p> This is a Bright Network Technology Academy capstone group project, made using
+                    Django and React JS. Our project is a pokemon tamagotchi crossover and was inspired 
+                    by Issy Yeung's pitch. <br/><br/> Our group consists of Clarisa Chan, Louisa Chan, Beth Gooding
+                    and Iain Sandison.
+                </p>
+            </div>
+            <div className="aboutSpacer"></div>
         </div>
     )
 }
