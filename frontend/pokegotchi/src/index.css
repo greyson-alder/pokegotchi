@@ -58,7 +58,17 @@ code {
   background-color: white;
   border-style: solid;
   border-color: black;
+  border-width: 0.75vh;
   height: 8vh;
+  width: 20vw;
+  font-size: 3vw;
+  margin: 2vh;
+}
+
+.landingButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /*About Page*/
