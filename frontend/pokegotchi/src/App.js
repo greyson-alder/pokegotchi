@@ -32,13 +32,14 @@ function App() {
       </Route>
       <Route path='/play' exact>
         <p>Game Page</p>
-      </Route>
-      <div className="App">
+        <div className="App">
         <div>Pokemon Data:
           <PokemonData />
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
+      </Route>
+     
       <Footer  className="Footer"/>
     </Router>
   );
