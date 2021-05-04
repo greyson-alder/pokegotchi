@@ -63,6 +63,7 @@ code {
   width: 20vw;
   font-size: 3vw;
   margin: 2vh;
+  cursor: pointer;
 }
 
 .landingButtons {
