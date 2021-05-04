@@ -1,31 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
-const PokemonData = () => {
-    const [pokemonData, setPokemonData] = useState(false);
-
-
-    useEffect(() => {
-        if (!pokemonData) {
-            getPokemonData()
-        }
-    });
-
-    const getPokemonData = async () => {
-        fetch("http://localhost:8000/api/pokemon/1")
-        .then(response => response.json())
-        .then(data => setPokemonData(data))
-    }
-
+const PokemonData = (props) => {
     return (
         <div>
             <ul>
-                <li>Name: {pokemonData.name}</li>
-                <li>Age: {pokemonData.age}</li>
-                <li>Pokemon: {pokemonData.pokemon}</li>
-                <li>Happiness: {pokemonData.happiness}</li>
-                <li>Hunger: {pokemonData.hunger}</li>
-                <li>funct_time: {pokemonData.func_time}</li>
-                <li>alive: {String(pokemonData.alive)}</li>
+                <li>Name: {props.pokemonData.name}</li>
+                <li>Age: {props.pokemonData.age}</li>
+                <li>Pokemon: {props.pokemonData.pokemon}</li>
+                <li>Happiness: {props.pokemonData.happiness}</li>
+                <li>Hunger: {props.pokemonData.hunger}</li>
+                <li>funct_time: {props.pokemonData.func_time}</li>
+                <li>alive: {String(props.pokemonData.alive)}</li>
             </ul>
              
         </div>

@@ -1,17 +1,35 @@
 import './App.css';
+import React, { useState, useEffect } from 'react'
 import PokemonData from "./components/PokemonData"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
   
+  const [pokemonData, setPokemonData] = useState(false);
+
+    useEffect(() => {
+        if (!pokemonData) {
+            getPokemonData()
+        }
+    });
+
+    const getPokemonData = async () => {
+        fetch("http://localhost:8000/api/pokemon/1")
+        .then(response => response.json())
+        .then(data => setPokemonData(data))
+    }
+
   const updatePokemon = async () => {
     fetch("http://localhost:8000/gameupdate")
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => setPokemonData(data))
   }
 
-  //window.setInterval(updatePokemon, 10000)
+  //   useEffect(() => {
+  //     const interval = window.setInterval(updatePokemon, 5000)
+  //     return () => {window.clearInterval(interval)} 
+  // });
 
   
 
@@ -34,7 +52,7 @@ function App() {
       </Route>
       <div className="App">
         <div>Pokemon Data:
-          <PokemonData />
+          <PokemonData pokemonData={pokemonData}/>
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
