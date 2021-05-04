@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.footer-brown {
+  background-color: saddlebrown;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+}
+

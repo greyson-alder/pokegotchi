@@ -1,5 +1,6 @@
 import './App.css';
 import PokemonData from "./components/PokemonData"
+import Footer from "./components/Footer"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -38,6 +39,7 @@ function App() {
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
+      <Footer  className="Footer"/>
     </Router>
   );
 }
