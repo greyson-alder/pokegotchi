@@ -3,6 +3,7 @@ import PokemonData from "./components/PokemonData"
 import Footer from "./components/Footer"
 
 import About from "./pages/About"
+import LandingPage from "./pages/LandingPage"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -21,7 +22,7 @@ function App() {
   return (
     <Router>
       <Route path='/' exact>
-        <p>Landing Page</p>
+        <LandingPage/>
       </Route>
       <Route path='/create_account' exact>
         <p>Create Account Page</p>
