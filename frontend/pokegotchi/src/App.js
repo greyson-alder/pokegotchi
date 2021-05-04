@@ -1,5 +1,7 @@
 import './App.css';
 
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+
 function App() {
   
   const fetchPokemon = async () => {
@@ -13,9 +15,26 @@ function App() {
   fetchPokemon()
 
   return (
-    <div className="App">
-      
-    </div>
+    <Router>
+      <Route path='/' exact>
+        <p>Landing Page</p>
+      </Route>
+      <Route path='/create_account' exact>
+        <p>Create Account Page</p>
+      </Route>
+      <Route path='/log_in' exact>
+        <p>Log In Page</p>
+      </Route>
+      <Route path='/about'>
+        <p>About Page</p>
+      </Route>
+      <Route>
+        <p>Game Page</p>
+      </Route>
+      <div className="App">
+        
+      </div>
+    </Router>
   );
 }
 
