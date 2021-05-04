@@ -8,7 +8,7 @@ function App() {
     .then(data => console.log(data))
   }
 
-  window.setInterval(fetchPokemon, 10000)
+  //window.setInterval(fetchPokemon, 10000)
 
   fetchPokemon()
 
