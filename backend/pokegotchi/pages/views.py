@@ -3,6 +3,8 @@ from rest_framework import status, viewsets
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, GenericAPIView
+from rest_framework.decorators import action
+from decimal import Decimal
 
 from .models import Pokemon, User
 from .serializers import PokemonSerializer, UserSerializer
@@ -39,21 +41,45 @@ class PokemonDetails(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
 
-    # def get_pokemon(self, pk):
-    #     try:
-    #         return Pokemon.objects.get(pk=pk)
-    #     except Pokemon.DoesNotExist:
-    #         raise Http404
+    def get_pokemon(self, pk):
+        try:
+            return Pokemon.objects.get(pk=pk)
+        except Pokemon.DoesNotExist:
+            raise Http404
 
     # def get(self, request, pk, format=None):
     #     pokemon = self.get_pokemon(pk)
     #     serializer = PokemonSerializer(pokemon)
     #     return Response(serializer.data)
     
-    def patch2(self, request, pk, format=None):
+    # update pokemon hunger by giving json body to be {"add_hunger": "value","user": pk}
+    @action(detail=True, methods=['post'])
+    def add_hunger(self, request, pk, format=None):
         pokemon = self.get_pokemon(pk)
-        print(request.data)
+
+        print('data is ' + str(request.data))
+        print(f'pokemon hunger is {pokemon.hunger}')
+ 
+        data = request.data['add_hunger']
+        pokemon.add_to_hunger(Decimal(data))
         serializer = PokemonSerializer(pokemon, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(detail=True, methods=['post'])
+    def add_happiness(self, request, pk, format=None):
+        pokemon = self.get_pokemon(pk)
+
+        print('data is ' + str(request.data))
+        print(f'pokemon happiness is {pokemon.happiness}')
+ 
+        data = request.data['add_happiness']
+        pokemon.add_to_happiness(Decimal(data))
+        serializer = PokemonSerializer(pokemon, data=request.data, partial=True)
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
