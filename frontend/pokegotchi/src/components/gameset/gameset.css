@@ -1,0 +1,108 @@
+.gameset {
+    background-color: red;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.gameset h1 {
+    padding: 0.5rem 0;
+}
+
+.gameScreen {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: lightpink;
+    border-top: 0.4rem solid black;
+    border-bottom: 0.4rem solid black;
+}
+
+.pokemonImage {
+    display: flex;
+    flex: 1 0 auto;
+    max-width: 512px;
+    position: relative;
+}
+
+.pokemonImage.isDead {
+    filter: grayscale(100%);
+}
+
+.pokemonImage.isDead .image2 {
+    animation: none;
+}
+
+.pokemonImage img {
+    width: 100%;
+    image-rendering: pixelated;
+}
+
+.image2 {
+    position: absolute;
+    animation: image2anim 2s infinite linear;
+}
+
+@keyframes image2anim {
+    0% {
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+    }
+    50.001% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.bar {
+    width: 2rem;
+    position: relative;
+}
+
+.barCurrent {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.hungerBar {
+    background-color: #FBC7BD;
+    border-left: 0.4rem black solid;
+}
+
+.hungerBarCurrent {
+    background-color: #F24726;
+}
+
+.happinessBar {
+    background-color: #D0F5F6;
+    border-right: 0.4rem black solid;
+}
+
+.happinessBarCurrent {
+    background-color: #12CDD4;
+}
+
+.feedPlayBtns {
+    border-bottom: 0.4rem solid black;
+    background-color: lightgreen;
+}
+
+.btn {
+    background: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: 0.4rem solid black;
+    margin: 1rem 2rem;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: lightgrey;
+}

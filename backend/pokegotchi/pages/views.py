@@ -157,7 +157,7 @@ class GameUpdate(APIView):
         hunger_chance = random.randint(0, 1)
         if hunger_chance:
             hunger -= 1
-            print("HUNGERRRRR (hunger decreasing by 1)")
+            print("HUNGER ================================= (hunger decreasing by 1)")
         return hunger
 
     def update_happiness(self):
@@ -166,20 +166,19 @@ class GameUpdate(APIView):
         happiness_chance = random.randint(1, 102)
         if (happiness_chance < (100-hunger)):
             happiness -= 1
-            print("NOOOOOO (happiness decreasing by 1)")
+            print("HAPPINESS ================================= (happiness decreasing by 1)")
         return happiness
 
-    def update_alive(self):
-        hunger = self.get_pokemon(1).hunger
+    def update_alive(self, new_hunger):
         age = self.get_pokemon(1).age
         alive = self.get_pokemon(1).alive
         alive_chance = random.randint(1, 101)
-        if ((alive_chance + 30) < age) or (hunger < 1):
+        if ((alive_chance + 30) < age) or (new_hunger < 1):
             alive = False
         return alive
 
-    def check_alive(self):
-        if self.get_pokemon(1).alive == False:
+    def check_alive(self, isAlive):
+        if isAlive == False:
             print("YOUR POKEMON DIED ===============================================================")
 
     def get(self, request, format=None):
@@ -189,8 +188,9 @@ class GameUpdate(APIView):
         new_age = self.increase_age()
         new_hunger = self.update_hunger()
         new_happiness = self.update_happiness()
-        update_alive = self.update_alive()
-        self.check_alive()
+        update_alive = self.update_alive(new_hunger)
+
+        self.check_alive(update_alive)
 
         pokemon_data = self.get_pokemon(1)
         print(pokemon_data)
