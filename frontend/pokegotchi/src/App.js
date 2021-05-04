@@ -1,18 +1,19 @@
 import './App.css';
+import PokemonData from "./components/PokemonData"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
   
-  const fetchPokemon = async () => {
-    fetch("http://localhost:8000/data")
+  const updatePokemon = async () => {
+    fetch("http://localhost:8000/gameupdate")
     .then(response => response.json())
     .then(data => console.log(data))
   }
 
-  //window.setInterval(fetchPokemon, 10000)
+  //window.setInterval(updatePokemon, 10000)
 
-  fetchPokemon()
+  
 
   return (
     <Router>
@@ -32,7 +33,10 @@ function App() {
         <p>Game Page</p>
       </Route>
       <div className="App">
-        
+        <div>Pokemon Data:
+          <PokemonData />
+          <button onClick={updatePokemon}>Click Me!</button>
+        </div>
       </div>
     </Router>
   );

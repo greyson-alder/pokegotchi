@@ -6,6 +6,10 @@ from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.decorators import action
 from decimal import Decimal
 
+from datetime import datetime
+import json
+import random
+
 from .models import Pokemon, User
 from .serializers import PokemonSerializer, UserSerializer
 
@@ -134,8 +138,87 @@ class UserDetails(GenericAPIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
-class TestingData(APIView):
+class GameUpdate(APIView):
+
+    def get_pokemon(self, pk):
+        try:
+            return Pokemon.objects.get(pk=pk)
+        except Pokemon.DoesNotExist:
+            raise Http404
+
+    def increase_age(self):
+        age = self.get_pokemon(1).age
+        age += 1
+        print("The pokemon's age is: ", age)
+        return age
+
+    def update_hunger(self):
+        hunger = self.get_pokemon(1).hunger
+        hunger_chance = random.randint(0, 1)
+        if hunger_chance:
+            hunger -= 1
+            print("HUNGERRRRR (hunger decreasing by 1)")
+        return hunger
+
+    def update_happiness(self):
+        hunger = self.get_pokemon(1).hunger
+        happiness = self.get_pokemon(1).happiness
+        happiness_chance = random.randint(1, 102)
+        if (happiness_chance < (100-hunger)):
+            happiness -= 1
+            print("NOOOOOO (happiness decreasing by 1)")
+        return happiness
+
+    def update_alive(self):
+        hunger = self.get_pokemon(1).hunger
+        age = self.get_pokemon(1).age
+        alive = self.get_pokemon(1).alive
+        alive_chance = random.randint(1, 101)
+        if ((alive_chance + 30) < age) or (hunger < 1):
+            alive = False
+        return alive
+
+    def check_alive(self):
+        if self.get_pokemon(1).alive == False:
+            print("YOUR POKEMON DIED ===============================================================")
 
     def get(self, request, format=None):
+        
+        #PokemonDetails.add_hunger(pk=1, request=-1)
+
+        new_age = self.increase_age()
+        new_hunger = self.update_hunger()
+        new_happiness = self.update_happiness()
+        update_alive = self.update_alive()
+        self.check_alive()
+
+        pokemon_data = self.get_pokemon(1)
+        print(pokemon_data)
+        
+        time_now = datetime.now()
+        #time_now = time_now.isoformat()
+        #time_now = json.dumps(time_now)
+
+        serializer = PokemonSerializer(
+            pokemon_data, 
+            data={
+                "func_time": time_now, 
+                "user": 1,
+                "age": new_age,
+                "hunger": new_hunger,
+                "happiness": new_happiness,
+                "alive": update_alive
+                }
+        )
+        
+        if serializer.is_valid():
+            print("valid")
+            serializer.save()
+            print(pokemon_data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        print(pokemon_data)
         testData = "Hello Everyone!"
         return Response(testData)
+
+    

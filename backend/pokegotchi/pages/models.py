@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
+from datetime import datetime
 
 #print("auth model is " + settings.AUTH_USER_MODEL)
 
@@ -26,9 +27,11 @@ class Pokemon(models.Model):
     pokemon = models.CharField(max_length=200, choices=POKEMON, default=BULBASAUR)
     happiness = models.DecimalField(decimal_places=2, max_digits=10, default=100)
     hunger = models.DecimalField(decimal_places=2, max_digits=10, default=100)
+    func_time = models.DateTimeField(default=datetime.now, blank=True)
+    alive = models.BooleanField(default=True)
 
     def __str__(self):
-        return f'{self.name} is a {self.pokemon}'
+        return f'{self.name} is a {self.pokemon} and was updated {self.func_time}'
     
     def add_to_hunger(self, amount):
         self.hunger += amount
