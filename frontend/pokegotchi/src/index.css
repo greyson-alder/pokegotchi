@@ -47,11 +47,11 @@ code {
 }
 
 .topTitle {
-  font-size: 5vh;
+  font-size:6vh;
 }
 
 .bottomTitle {
-  font-size: 7vh;
+  font-size: 8vh;
 }
 
 .landingButton {
@@ -60,8 +60,8 @@ code {
   border-color: black;
   border-width: 0.75vh;
   height: 8vh;
-  width: 20vw;
-  font-size: 3vw;
+  width: 15vw;
+  font-size: 3vh;
   margin: 2vh;
   cursor: pointer;
 }
@@ -79,17 +79,17 @@ code {
 }
 
 .aboutTitle {
-  font-size: 6vh;
+  font-size: 8vh;
   text-align: center;
 }
 
 .aboutText {
   background-color: white;
-  height: 45vh;
+  height: 46vh;
 }
 
 .aboutText p{
-  font-size: 4vh;
+  font-size: 5vh;
 }
 
 .aboutSpacer {
