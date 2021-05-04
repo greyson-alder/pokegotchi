@@ -60,6 +60,7 @@ urlpatterns = [
     ),
     #path('swagger/', schema_view),
     #path('swagger/', ),
-    
+    path("data/", views.TestingData.as_view()),
+
 
 ]

@@ -133,3 +133,9 @@ class UserDetails(GenericAPIView):
         user = self.get_user(pk)
         serializer = UserSerializer(user)
         return Response(serializer.data)
+
+class TestingData(APIView):
+
+    def get(self, request, format=None):
+        testData = "Hello Everyone!"
+        return Response(testData)
