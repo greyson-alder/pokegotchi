@@ -6,6 +6,9 @@ from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.decorators import action
 from decimal import Decimal
 
+from datetime import datetime
+import json
+
 from .models import Pokemon, User
 from .serializers import PokemonSerializer, UserSerializer
 
@@ -134,8 +137,31 @@ class UserDetails(GenericAPIView):
         serializer = UserSerializer(user)
         return Response(serializer.data)
 
-class TestingData(APIView):
+class GameUpdate(APIView):
+
+    def get_pokemon(self, pk):
+        try:
+            return Pokemon.objects.get(pk=pk)
+        except Pokemon.DoesNotExist:
+            raise Http404
 
     def get(self, request, format=None):
+        pokemon_data = self.get_pokemon(1)
+        print(pokemon_data)
+        
+        time_now = datetime.now()
+        time_now = time_now.isoformat()
+        #time_now = json.dumps(time_now)
+
+        serializer = PokemonSerializer(pokemon_data, data={"func_time": time_now, "user": 1})
+        if serializer.is_valid():
+            print("valid")
+            serializer.save()
+            print(pokemon_data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        print(pokemon_data)
         testData = "Hello Everyone!"
         return Response(testData)
+
+    
