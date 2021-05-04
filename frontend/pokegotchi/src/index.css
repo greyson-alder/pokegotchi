@@ -99,3 +99,11 @@ code {
 .backButton {
   background-color: white;
 }
+
+/*Form formatting*/
+
+.formStyle {
+  margin: 0 8%;
+  padding: 1em;
+  background-color: khaki;
+}
