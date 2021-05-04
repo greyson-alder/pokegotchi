@@ -5,17 +5,18 @@ import { Link } from 'react-router-dom'
 
 const LandingPage = () => {
     return (
-        <>
-            <div className="Title">
-                <Title title="Welcome to"/>
-                <Title title="Pokegotchi"/>
+        <div className="landingPage">
+            <div className="spacerLandingTop"></div>
+            <div className="landingTitle">
+                <Title title="Welcome to" className="topTitle"/>
+                <Title title={'Pokegotchi'} className="bottomTitle"/>
            </div>
            <div className="landingButtons">
-                <Link to ="/create_account"><Button text="SIGN UP"/></Link>
-                <Link to ="/log_in"><Button text="LOG IN"/></Link>
+                <Link to ="/create_account"><Button text="SIGN UP" className="landingButton"/></Link>
+                <Link to ="/log_in"><Button text="LOG IN" className="landingButton"/></Link>
            </div>
            
-        </>
+        </div>
     )
 }
 
