@@ -49,8 +49,8 @@ urlpatterns = [
     path('api/pokemon', pokemon_list),
     #path('api/pokemon/<int:pk>', views.PokemonDetails.as_view()),
     path('api/pokemon/<int:pk>', pokemon_detail),
-    path('api/pokemon/<int:pk>/hunger/', pokemon_hunger),
-    path('api/pokemon/<int:pk>/happiness/', pokemon_happiness),
+    path('api/pokemon/<int:pk>/hunger', pokemon_hunger),
+    path('api/pokemon/<int:pk>/happiness', pokemon_happiness),
     path('api/user', views.UserList.as_view()),
     path('api/user/<int:pk>', views.UserDetails.as_view()),
     path(
