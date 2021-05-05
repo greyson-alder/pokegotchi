@@ -68,7 +68,7 @@ function CreatePokemon() {
     }
     
     return (
-        <div className="landingPage">
+        <div className="loginPage">
             <div className="spacerLandingTop"></div>
             <div className="landingTitle">
                 <Title title="Create Pokemon" className="topTitle"/>
@@ -88,7 +88,7 @@ function CreatePokemon() {
                             <option value="Squirtle">Squirtle</option>
                         </Form.Control>   
                     </Form.Group> 
-                    <div className="landingButtons">
+                    <div className="landingButtonslogin">
                         <Button text="GO" className="landingButton" type="submit"/>
                     </div>
                 </Form>

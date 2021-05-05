@@ -94,11 +94,9 @@ function App() {
           <LandingPage/>
         </Route>
         <Route path='/create_account' exact>
-          <p>Create Account Page</p>
           <Register/>
         </Route>
         <Route path='/log_in' exact>
-          <p>Log In Page</p>
           <Login/>
         </Route>
         <Route path='/about' exact>
@@ -112,7 +110,6 @@ function App() {
           </div> */}
         </Route>
         <Route path='/create_pokemon' exact>
-          <p>Create a Pokemon Page</p>
           <CreatePokemon/>
         </Route>
         <Footer  className="footer-brown"/>
