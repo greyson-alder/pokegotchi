@@ -1,4 +1,4 @@
-const button = ({text, className}) => {
+const Button = ({text, className}) => {
     return (
         <div>
             <button className={ className }>{ text }</button>
@@ -6,9 +6,11 @@ const button = ({text, className}) => {
     )
 }
 
+
 button.defaultProps = {
     text: "click me",
     className: ""
 }
 
-export default button
+export default Button
+

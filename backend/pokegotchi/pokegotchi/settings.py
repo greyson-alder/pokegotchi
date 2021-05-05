@@ -182,3 +182,5 @@ CORS_ALLOWED_ORIGINS = [
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:8000",
 ]
+
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
