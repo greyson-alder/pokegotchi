@@ -176,11 +176,13 @@ AUTH_USER_MODEL = 'pages.User'
 SITE_ID = 1
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
+    "http://localhost:8000","http://localhost:3000",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    "http://localhost:8000",
+    "http://localhost:8000","http://localhost:3000",
 ]
+
+CORS_ALLOW_CREDENTIALS=True
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
