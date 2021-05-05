@@ -6,4 +6,9 @@ const button = ({text, className}) => {
     )
 }
 
+button.defaultProps = {
+    text: "click me",
+    className: ""
+}
+
 export default button
