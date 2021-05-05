@@ -1,0 +1,40 @@
+.headerWrapper {
+    background-color: #CEE741;
+}
+
+.header {
+    background-color: #CEE741;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.header .titleLink {
+    font-size: 3rem;
+    font-family: Caveat, cursive;
+    color: black;
+}
+
+.header h1 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.header .logOutBtn {
+    background: white;
+    font-weight: bold;
+    padding: 0rem 1rem;
+    border: none;
+    border-radius: 1rem;
+    margin: 0.5rem 0;
+    cursor: pointer;
+}
+
+.logOutBtn:hover {
+    background: lightgrey;
+}
