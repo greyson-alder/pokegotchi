@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const About = () => {
     return (
         <div className="aboutPage">
-            <Link to='/'><Button text="Back" className="backButton"/></Link>
+            <Link to='/'><Button text="&#8592;Back" className="backButton"/></Link>
             <Title title="About" className="aboutTitle"></Title>
             <div className="aboutText">
                 <p> This is a Bright Network Technology Academy capstone group project, made using
