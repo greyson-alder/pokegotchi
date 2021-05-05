@@ -18,12 +18,20 @@ const Gameset = (props) => {
         setImageBase(imageName)
     }, [props.pokemonData.pokemon, props.pokemonData.age]);
 
+        function handleClick(e){
+        e.preventDefault();
+        console.log("button clicked")
+        props.addHunger();
+    }
+
     return (
         <div className="gameset">
             <h1>{props.pokemonData.name}</h1>
             <div className="gameScreen">
                 <div className="hungerBar bar">
+                    <p className="statNumber">{String(parseInt(props.pokemonData.hunger))}</p>
                     <div className="hungerBarCurrent barCurrent" style={{height: props.pokemonData.hunger+"%"}}></div>
+                    <img className="hungerBarIcon barIcon" src="/oranBerry.png" alt="Hunger Bar Indicator"/>
                 </div>
                 <div className={"pokemonImage" + (props.pokemonData.alive ? "" : " isDead")}>
                     {/* ternary operator */}
@@ -31,11 +39,13 @@ const Gameset = (props) => {
                     <img className="image2" src={"/"+imageBase+"-2.png"} alt={props.pokemonData.pokemon} />
                 </div>
                 <div className="happinessBar bar">
-                <div className="happinessBarCurrent barCurrent" style={{height: props.pokemonData.happiness+"%"}}></div>
+                    <p className="statNumber">{String(parseInt(props.pokemonData.happiness))}</p>
+                    <div className="happinessBarCurrent barCurrent" style={{height: props.pokemonData.happiness+"%"}}></div>
+                    <img className="happinessBarIcon barIcon" src="/substituteDoll.png" alt="Happiness Bar Indicator"/>
                 </div>
             </div>
             <div className="feedPlayBtns">
-                <button className="feedPlayBtn">FEED</button>
+                <button className="feedPlayBtn" onClick={handleClick}>FEED</button>
                 <button className="feedPlayBtn">PLAY</button>
             </div>
             <div>

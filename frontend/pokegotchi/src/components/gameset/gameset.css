@@ -59,7 +59,7 @@
 }
 
 .bar {
-    width: 2rem;
+    width: 2.4rem;
     position: relative;
 }
 
@@ -105,4 +105,28 @@
 
 .feedPlayBtn:hover {
     background-color: lightgrey;
+}
+
+.statNumber {
+    display: flex;
+    font-weight: bold;
+    font-size: 1rem;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.barIcon {
+    z-index: 2;
+    position: absolute;
+    width: 4rem;
+    bottom: 0;
+}
+
+.hungerBarIcon {
+    left: 0;
+}
+
+.happinessBarIcon {
+    right: 0;
 }
