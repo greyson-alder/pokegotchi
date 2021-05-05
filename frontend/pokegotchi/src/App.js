@@ -39,26 +39,28 @@ function App() {
   // });
 
   const addHunger = async () => {
-    await fetch(`http://localhost:8000/api/pokemon/${pokemonData.return_pokemon_id}/hunger`, {
-        method: "POST",
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({add_hunger:5, user:pokemonData.user}),  
-        })
-        .then(response => {
-            if(!response.ok){
-                throw new Error("Not 2xx response")
-            }
-            return response.json();
-        })
-        // .then(data => {
-        //     console.log('Successfully added hunger:', data);
-        // })
-        .then(data => setPokemonData(data))
-        .catch((error) => {
-        console.error('Error:', error);
-    });
+     if (pokemonData.alive && pokemonData.hunger <= 95) {
+      await fetch(`http://localhost:8000/api/pokemon/${pokemonData.return_pokemon_id}/hunger`, {
+          method: "POST",
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({add_hunger:5, user:pokemonData.user}),  
+          })
+          .then(response => {
+              if(!response.ok){
+                  throw new Error("Not 2xx response")
+              }
+              return response.json();
+          })
+          // .then(data => {
+          //     console.log('Successfully added hunger:', data);
+          // })
+          .then(data => setPokemonData(data))
+          .catch((error) => {
+          console.error('Error:', error);
+      });
+    }
   }
 
   return (
