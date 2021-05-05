@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,15 +22,6 @@ code {
 
 #root {
   width: 100%;
-}
-
-/*Footer*/
-
-.footer-brown {
-  background-color: saddlebrown;
-  color: white;
-  display: flex;
-  justify-content: space-around;
 }
 
 /*Landing Page*/
@@ -114,6 +107,11 @@ code {
 
 .backButton {
   background-color: white;
+  border-bottom-right-radius: 25%;
+  border-style:hidden;
+  height: 10vh;
+  width: 15vh;
+  font-size: 4vh;
 }
 
 /*Form formatting*/

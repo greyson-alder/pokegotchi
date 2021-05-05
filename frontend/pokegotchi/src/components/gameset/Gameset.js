@@ -6,14 +6,23 @@ const Gameset = (props) => {
     const [imageBase, setImageBase] = useState("");
 
     useEffect(() => {
-        let imageName = props.pokemonData.pokemon
+        var imageName = props.pokemonData.pokemon
         if (props.pokemonData.age >= 36) {
             imageName += "3"
         } else if (props.pokemonData.age >= 16) {
             imageName += "2"
         }
-        else {
+        else if (props.pokemonData.age >= 5) {
             imageName += "1"
+        }
+        else if (props.pokemonData.age >= 4) {
+            imageName = "Egg3"
+        }
+        else if (props.pokemonData.age >= 2) {
+            imageName = "Egg2"
+        }
+        else {
+            imageName = "Egg1"
         }
         setImageBase(imageName)
     }, [props.pokemonData.pokemon, props.pokemonData.age]);
@@ -32,7 +41,8 @@ const Gameset = (props) => {
 
     return (
         <div className="gameset">
-            <h1>{props.pokemonData.name}</h1>
+            <h2>{props.pokemonData.name}</h2>
+            <h3>— Age: {String(parseInt(props.pokemonData.age))} —</h3>
             <div className="gameScreen">
                 <div className="hungerBar bar">
                     <p className="statNumber">{String(parseInt(props.pokemonData.hunger))}</p>

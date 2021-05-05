@@ -2,12 +2,13 @@ import './App.css';
 import React, { useState, useEffect } from 'react'
 import PokemonData from "./components/pokemondata/PokemonData"
 import Gameset from "./components/gameset/Gameset"
-import Footer from "./components/Footer"
+import Footer from "./components/footer/Footer"
 import About from "./pages/About"
 import LandingPage from "./pages/LandingPage"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import CreatePokemon from "./pages/CreatePokemon";
+import Header from "./components/header/Header"
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -86,38 +87,37 @@ function App() {
  }
 
   return (
-    <Router>
-      <Route path='/' exact>
-        <LandingPage/>
-      </Route>
-      <Route path='/create_account' exact>
-        <p>Create Account Page</p>
-        <Register/>
-      </Route>
-      <Route path='/log_in' exact>
-        <p>Log In Page</p>
-        <Login/>
-      </Route>
-      <Route path='/about' exact>
-        <About/>
-      </Route>
-      <Route path='/play' exact>
-        <p>Game Page</p>
-        <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
-      </Route>
-      <Route path='/create_pokemon' exact>
-        <p>Create a Pokemon Page</p>
-        <CreatePokemon/>
-      </Route>
-      <div className="App">
-        <div className="tempData">
-          <PokemonData pokemonData={pokemonData}/>
-          <button onClick={updatePokemon}>Click Me!</button>
-        </div>
-      </div>
-      <Footer  className="footer-brown"/>
-
-    </Router>
+    <div className="App">
+      <Router>
+        <Header />
+        <Route path='/' exact>
+          <LandingPage/>
+        </Route>
+        <Route path='/create_account' exact>
+          <p>Create Account Page</p>
+          <Register/>
+        </Route>
+        <Route path='/log_in' exact>
+          <p>Log In Page</p>
+          <Login/>
+        </Route>
+        <Route path='/about' exact>
+          <About/>
+        </Route>
+        <Route path='/play' exact>
+          <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
+          {/* <div className="tempData">
+            <PokemonData pokemonData={pokemonData}/>
+            <button onClick={updatePokemon}>Click Me!</button>
+          </div> */}
+        </Route>
+        <Route path='/create_pokemon' exact>
+          <p>Create a Pokemon Page</p>
+          <CreatePokemon/>
+        </Route>
+        <Footer  className="footer-brown"/>
+      </Router>
+    </div>
   );
 }
 
