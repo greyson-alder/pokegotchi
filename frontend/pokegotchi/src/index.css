@@ -82,6 +82,12 @@ code {
   align-items: center;
 }
 
+.logo {
+  margin: 0;
+  padding: 0;
+  height: 22em;
+}
+
 /*About Page*/
 
 .aboutPage {
@@ -117,3 +123,4 @@ code {
   padding: 1em;
   background-color: khaki;
 }
+
