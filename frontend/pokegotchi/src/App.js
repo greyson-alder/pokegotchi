@@ -18,12 +18,12 @@ function App() {
 
   useEffect(() => {
       if (!pokemonData) {
-          getPokemonData()
+          getPokemonData(2)
       }
   });
 
-  const getPokemonData = async () => {
-      fetch("http://localhost:8000/api/pokemon/1")
+  const getPokemonData = async (id) => {
+      fetch(`http://localhost:8000/api/pokemon/${id}`)
       .then(response => response.json())
       .then(data => setPokemonData(data))
   }
