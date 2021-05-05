@@ -60,17 +60,18 @@ function App() {
         <p>Game Page</p>
         <Gameset pokemonData={pokemonData}/>
       </Route>
+      <Route path='/create_pokemon' exact>
+        <p>Create a Pokemon Page</p>
+        <CreatePokemon/>
+      </Route>
       <div className="App">
         <div>Pokemon Data:
           <PokemonData pokemonData={pokemonData}/>
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
-      <Route path='/create_pokemon' exact>
-        <p>Create a Pokemon Page</p>
-        <CreatePokemon/>
-      </Route>
-      <Footer  className="Footer"/>
+      <Footer  className="footer-brown"/>
+
     </Router>
   );
 }

@@ -4,4 +4,9 @@ const Title = ({ title, className }) => {
     )
 }
 
+Title.defaultProps = {
+    title: "Add title here",
+    className: ""
+}
+
 export default Title
