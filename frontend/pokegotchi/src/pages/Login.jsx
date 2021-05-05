@@ -46,7 +46,7 @@ function Login() {
     }
     
     return (
-        <div className="landingPage">
+        <div className="loginPage">
             <div className="spacerLandingTop"></div>
             <div className="landingTitle">
                 <Title title="Log in" className="topTitle"/>
@@ -63,7 +63,7 @@ function Login() {
                     <Form.Control type="password" value={password} placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                 </Form.Group>
 
-                <div className="landingButtons">
+                <div className="landingButtonslogin">
                     <Button text="LOG IN" className="landingButton" type="submit"/>
                 </div>
             </Form>   
