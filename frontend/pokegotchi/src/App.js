@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react'
-import PokemonData from "./components/PokemonData"
+import PokemonData from "./components/pokemondata/PokemonData"
+import Gameset from "./components/gameset/Gameset"
 import Footer from "./components/Footer"
-
 import About from "./pages/About"
 import LandingPage from "./pages/LandingPage"
 import Login from "./pages/Login"
@@ -15,17 +15,17 @@ function App() {
   
   const [pokemonData, setPokemonData] = useState(false);
 
-    useEffect(() => {
-        if (!pokemonData) {
-            getPokemonData()
-        }
-    });
+  useEffect(() => {
+      if (!pokemonData) {
+          getPokemonData()
+      }
+  });
 
-    const getPokemonData = async () => {
-        fetch("http://localhost:8000/api/pokemon/1")
-        .then(response => response.json())
-        .then(data => setPokemonData(data))
-    }
+  const getPokemonData = async () => {
+      fetch("http://localhost:8000/api/pokemon/1")
+      .then(response => response.json())
+      .then(data => setPokemonData(data))
+  }
 
   const updatePokemon = async () => {
     fetch("http://localhost:8000/gameupdate")
@@ -58,13 +58,14 @@ function App() {
       </Route>
       <Route path='/play' exact>
         <p>Game Page</p>
-        <div className="App">
+        <Gameset pokemonData={pokemonData}/>
+      </Route>
+      <div className="App">
         <div>Pokemon Data:
           <PokemonData pokemonData={pokemonData}/>
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
-      </Route>
       <Route path='/create_pokemon' exact>
         <p>Create a Pokemon Page</p>
         <CreatePokemon/>
