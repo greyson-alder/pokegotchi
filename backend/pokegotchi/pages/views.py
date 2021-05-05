@@ -222,3 +222,14 @@ class GameUpdate(APIView):
         return Response(testData)
 
     
+class UsersPokemon(APIView):
+    def get_pokemon(self, pk):
+        try:
+            return Pokemon.objects.get(user=pk)
+        except Pokemon.DoesNotExist:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        pokemon = self.get_pokemon(pk)
+        serializer = PokemonSerializer(pokemon)
+        return Response(serializer.data)
