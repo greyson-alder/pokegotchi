@@ -35,8 +35,8 @@ const Gameset = (props) => {
                 </div>
             </div>
             <div className="feedPlayBtns">
-                <button className="btn">FEED</button>
-                <button className="btn">PLAY</button>
+                <button className="feedPlayBtn">FEED</button>
+                <button className="feedPlayBtn">PLAY</button>
             </div>
             <div>
                 <button>INVENTORY</button>
