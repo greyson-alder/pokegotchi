@@ -1,0 +1,22 @@
+.footerWrapper {
+    display: flex;
+    background-color: #50514F;
+    height: 100%;
+    flex: 1 1 auto;
+
+}
+
+.footer {
+    background-color: #50514F;
+    color: white;
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    bottom: 0;
+    margin: auto auto 1rem;
+    max-width: 500px;
+}
+
+.footer .aboutLink {
+    color: white;
+}

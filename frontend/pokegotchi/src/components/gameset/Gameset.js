@@ -32,7 +32,8 @@ const Gameset = (props) => {
 
     return (
         <div className="gameset">
-            <h1>{props.pokemonData.name}</h1>
+            <h2>{props.pokemonData.name}</h2>
+            <h3>— Age: {String(parseInt(props.pokemonData.age))} —</h3>
             <div className="gameScreen">
                 <div className="hungerBar bar">
                     <p className="statNumber">{String(parseInt(props.pokemonData.hunger))}</p>

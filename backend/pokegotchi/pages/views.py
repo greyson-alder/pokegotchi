@@ -156,7 +156,7 @@ class GameUpdate(APIView):
         hunger = self.get_pokemon(1).hunger
         hunger_chance = random.randint(0, 1)
         if hunger_chance:
-            hunger -= 1
+            hunger -= 10
             print("HUNGER ================================= (hunger decreasing by 1)")
         return hunger
 
@@ -165,7 +165,7 @@ class GameUpdate(APIView):
         happiness = self.get_pokemon(1).happiness
         happiness_chance = random.randint(1, 102)
         if (happiness_chance < (100-hunger)):
-            happiness -= 1
+            happiness -= 10
             print("HAPPINESS ================================= (happiness decreasing by 1)")
         return happiness
 
