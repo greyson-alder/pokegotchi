@@ -6,23 +6,25 @@ import {Link} from 'react-router-dom'
 
 const Header = () => {
 
-    let userLoggedIn = localStorage.getItem("loggedIn")
+    // not working properly
+    // let userLoggedIn = localStorage.getItem("loggedIn")
 
-    function handleLogOut(){
-        if (userLoggedIn){
-            console.log("logged in, proceeding to be logged out")
-            localStorage.setItem('loggedIn', false)
-            userLoggedIn = false
-        }else{
-        console.log("already logged out ", userLoggedIn)
-        }
-    }
+    
+    // // function handleLogOut(){
+    // //     if (userLoggedIn){
+    // //         console.log("logged in, proceeding to be logged out")
+    // //         localStorage.setItem('loggedIn', false)
+    // //         userLoggedIn = false
+    // //     }else{
+    // //     console.log("already logged out ", userLoggedIn)
+    // //     }
+    // // }
 
     return (
         <div className="headerWrapper">
             <div className="header">
                 <Link to="/" className="titleLink">Pokégotchi</Link>
-                <button className="logOutBtn" onClick={handleLogOut}>Log Out</button>
+                <button className="logOutBtn">Log Out</button>
             </div>
         </div>
     )
