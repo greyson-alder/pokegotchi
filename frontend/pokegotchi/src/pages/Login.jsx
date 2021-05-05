@@ -29,6 +29,8 @@ function Login() {
             })
             .then(data => {
                 console.log('Success:', data);
+                //console.log('userpk:', data.user.pk, 'access_token: ', data.access_token  );
+                localStorage.setItem('user', data.user.pk)
                 history.push("/play")
             })
             .catch((error) => {
