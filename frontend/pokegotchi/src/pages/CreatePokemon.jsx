@@ -3,25 +3,45 @@ import Button from '../components/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
-import React, { useContext, useState } from "react";
+
+import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
 
 function CreatePokemon() {
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password1, setPassword1] = useState("");
-    const [password2, setPassword2] = useState("");
+    const [name, setName] = useState("");
+    const [pokemon, setPokemon] = useState("");
+    const [user, setUser] = useState("");
 
     let history = useHistory();
 
-    const register = async () => {
+    const choosePokemon = async () => {
+
+        await fetch('http://localhost:8000/api/dj-rest-auth/user/', {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then(response => {
+            if(!response.ok){
+                throw new Error("Not 2xx response")
+            }
+            return response.json();
+        })
+          .then(data => {
+            console.log('Success:', data);
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+
+
         await fetch('http://localhost:8000/api/dj-rest-auth/registration/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({username:username, password1:password1, password2:password2}),
+            body: JSON.stringify({name:name, pokemon:pokemon}),
             })
             .then(response => {
                 if(!response.ok){
@@ -41,7 +61,7 @@ function CreatePokemon() {
     function handleSubmit(e){
         e.preventDefault();
         console.log("register clicked")
-        register();
+        choosePokemon();
     }
     
     return (
@@ -51,32 +71,30 @@ function CreatePokemon() {
                 <Title title="Create Pokemon" className="topTitle"/>
             </div>
             <div className="formStyle">
-            <Form onSubmit={handleSubmit}>
-                <Form.Group>
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" value={username} placeholder="Enter username" onChange={(e) => setUsername(e.target.value)} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control type="email" value={email} placeholder="Enter username" onChange={(e) => setEmail(e.target.value)} />
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" value={password1} placeholder="Password" onChange={(e) => setPassword1(e.target.value)}/>
-                </Form.Group>
-                <Form.Group>
-                    <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" value={password2} placeholder="Password" onChange={(e) => setPassword2(e.target.value)}/>
-                </Form.Group>
-                <div className="landingButtons">
-                    <Button text="SIGN UP" className="landingButton" type="submit"/>
-                </div>
-            </Form>   
+                <Form onSubmit={handleSubmit}>
+                    <Form.Group>
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="username" value={name} placeholder="Enter name" onChange={(e) => setName(e.target.value)} />
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label>Pokemon</Form.Label>
+                        <Form.Control as= "select" type="pokemon" value={pokemon} placeholder="Choose Pokemon" onChange={(e) => setPokemon(e.target.value)}>
+                            <option>Please Select</option>
+                            <option value="Bulbasaur">Bulbasaur</option>
+                            <option value="Charmander">Charmander</option>
+                            <option value="Squirtle">Squirtle</option>
+                        </Form.Control>   
+                    </Form.Group> 
+                    <div className="landingButtons">
+                        <Button text="GO" className="landingButton" type="submit"/>
+                    </div>
+                </Form>
             </div>
             
             
         </div>
     )
 }
+
 
 export default CreatePokemon
