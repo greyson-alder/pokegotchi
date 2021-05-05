@@ -108,6 +108,11 @@ code {
 
 .backButton {
   background-color: white;
+  border-bottom-right-radius: 25%;
+  border-style:hidden;
+  height: 10vh;
+  width: 15vh;
+  font-size: 4vh;
 }
 
 /*Form formatting*/
