@@ -21,7 +21,7 @@
 .pokemonImage {
     display: flex;
     flex: 1 0 auto;
-    max-width: 512px;
+    max-width: 400px;
     position: relative;
 }
 
