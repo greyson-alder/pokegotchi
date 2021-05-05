@@ -110,7 +110,7 @@ function App() {
         <CreatePokemon/>
       </Route>
       <div className="App">
-        <div>Pokemon Data:
+        <div className="tempData">
           <PokemonData pokemonData={pokemonData}/>
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
