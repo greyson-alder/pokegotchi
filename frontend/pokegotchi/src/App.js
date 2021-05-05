@@ -27,8 +27,8 @@ function App() {
           const data = await res.json()
           setPokemonData(data)
           }
-          // fetchUserPokemon(userpk)
-          getPokemonData(2)
+          fetchUserPokemon(userpk)
+          //getPokemonData(2)
       }
   });
 
