@@ -3,7 +3,7 @@ import Button from '../components/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
 
@@ -31,6 +31,7 @@ function Login() {
                 console.log('Success:', data);
                 //console.log('userpk:', data.user.pk, 'access_token: ', data.access_token  );
                 localStorage.setItem('user', data.user.pk)
+                localStorage.setItem('loggedIn', true)
                 history.push("/play")
             })
             .catch((error) => {
