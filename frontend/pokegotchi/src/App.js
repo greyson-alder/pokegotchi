@@ -62,7 +62,7 @@ function App() {
         </div>
       </div>
      
-      <Footer  className="Footer"/>
+      <Footer  className="footer-brown"/>
     </Router>
   );
 }
