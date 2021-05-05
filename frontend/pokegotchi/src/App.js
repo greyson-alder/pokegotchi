@@ -38,7 +38,7 @@ function App() {
   //     return () => {window.clearInterval(interval)} 
   // });
 
-  const addHunger = async () => {
+   const addHunger = async () => {
      if (pokemonData.alive && pokemonData.hunger <= 95) {
       await fetch(`http://localhost:8000/api/pokemon/${pokemonData.return_pokemon_id}/hunger`, {
           method: "POST",
@@ -63,6 +63,28 @@ function App() {
     }
   }
 
+  const addHappiness = async () => {
+    if (pokemonData.alive && pokemonData.happiness <= 95) {
+     await fetch(`http://localhost:8000/api/pokemon/${pokemonData.return_pokemon_id}/happiness`, {
+         method: "POST",
+         headers: {
+             'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({add_happiness:5, user:pokemonData.user}),  
+         })
+         .then(response => {
+             if(!response.ok){
+                 throw new Error("Not 2xx response")
+             }
+             return response.json();
+         })
+         .then(data => setPokemonData(data))
+         .catch((error) => {
+         console.error('Error:', error);
+     });
+   }
+ }
+
   return (
     <Router>
       <Route path='/' exact>
@@ -81,7 +103,7 @@ function App() {
       </Route>
       <Route path='/play' exact>
         <p>Game Page</p>
-        <Gameset pokemonData={pokemonData} addHunger={addHunger}/>
+        <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
       </Route>
       <Route path='/create_pokemon' exact>
         <p>Create a Pokemon Page</p>

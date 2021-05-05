@@ -18,10 +18,16 @@ const Gameset = (props) => {
         setImageBase(imageName)
     }, [props.pokemonData.pokemon, props.pokemonData.age]);
 
-        function handleClick(e){
+    function handleHungerClick(e){
         e.preventDefault();
-        console.log("button clicked")
+        console.log("Added +5 to Hunger")
         props.addHunger();
+    }
+
+    function handleHappinessClick(e){
+        e.preventDefault();
+        console.log("Added +5 to Happiness")
+        props.addHappiness();
     }
 
     return (
@@ -45,12 +51,12 @@ const Gameset = (props) => {
                 </div>
             </div>
             <div className="feedPlayBtns">
-                <button className="feedPlayBtn" onClick={handleClick}>FEED</button>
-                <button className="feedPlayBtn">PLAY</button>
+                <button className="feedPlayBtn" onClick={handleHungerClick}>FEED</button>
+                <button className="feedPlayBtn" onClick={handleHappinessClick}>PLAY</button>
             </div>
-            <div>
+            {/* <div>
                 <button>INVENTORY</button>
-            </div>
+            </div> */}
         </div>
     )
 }
