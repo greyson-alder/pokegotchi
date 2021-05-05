@@ -20,6 +20,14 @@ function App() {
   useEffect(() => {
       if (!pokemonData) {
           const userpk = localStorage.getItem('user');
+          const fetchUserPokemon = async (userpk) => {
+          const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
+            method: 'GET',
+          })
+          const data = await res.json()
+          setPokemonData(data)
+          }
+          // fetchUserPokemon(userpk)
           getPokemonData(2)
       }
   });
