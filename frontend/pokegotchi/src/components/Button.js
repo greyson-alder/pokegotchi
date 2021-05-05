@@ -7,7 +7,7 @@ const Button = ({text, className}) => {
 }
 
 
-button.defaultProps = {
+Button.defaultProps = {
     text: "click me",
     className: ""
 }
