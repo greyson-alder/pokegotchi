@@ -5,6 +5,9 @@ import Gameset from "./components/gameset/Gameset"
 import Footer from "./components/Footer"
 import About from "./pages/About"
 import LandingPage from "./pages/LandingPage"
+import Login from "./pages/Login"
+import Register from "./pages/Register"
+import CreatePokemon from "./pages/CreatePokemon";
 
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
@@ -44,9 +47,11 @@ function App() {
       </Route>
       <Route path='/create_account' exact>
         <p>Create Account Page</p>
+        <Register/>
       </Route>
       <Route path='/log_in' exact>
         <p>Log In Page</p>
+        <Login/>
       </Route>
       <Route path='/about' exact>
         <About/>
@@ -61,7 +66,10 @@ function App() {
           <button onClick={updatePokemon}>Click Me!</button>
         </div>
       </div>
-     
+      <Route path='/create_pokemon' exact>
+        <p>Create a Pokemon Page</p>
+        <CreatePokemon/>
+      </Route>
       <Footer  className="Footer"/>
     </Router>
   );

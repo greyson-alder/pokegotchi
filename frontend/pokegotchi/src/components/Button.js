@@ -1,4 +1,4 @@
-const button = ({text, className}) => {
+const Button = ({text, className}) => {
     return (
         <div>
             <button className={ className }>{ text }</button>
@@ -6,4 +6,4 @@ const button = ({text, className}) => {
     )
 }
 
-export default button
+export default Button
