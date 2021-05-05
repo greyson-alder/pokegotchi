@@ -15,9 +15,11 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 function App() {
   
   const [pokemonData, setPokemonData] = useState(false);
+  
 
   useEffect(() => {
       if (!pokemonData) {
+          const userpk = localStorage.getItem('user');
           getPokemonData(2)
       }
   });
