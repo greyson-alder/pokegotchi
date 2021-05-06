@@ -143,7 +143,7 @@ class GameUpdate(APIView):
         hunger = self.get_pokemon(pk).hunger
         happiness = self.get_pokemon(pk).happiness
         happiness_chance = random.randint(1, 102)
-        if self.get_pokemon(pk).age >= 5 and (happiness_chance < (100-hunger)) and happiness > 0 :
+        if self.get_pokemon(pk).age >= 5 and (happiness_chance < (100-hunger)) and happiness > 0 and self.get_pokemon(pk).alive:
             happiness -= 10
             if happiness < 0 :
                 happiness = 0
