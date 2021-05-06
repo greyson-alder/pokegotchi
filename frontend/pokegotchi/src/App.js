@@ -16,12 +16,17 @@ function App() {
   
   const [pokemonData, setPokemonData] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
+  const [user, setUser] = useState(0);
 
   useEffect(() => {
-    let userpk = localStorage.getItem('user');
-      if (String(pokemonData.user) !== userpk) {
+    // userpk = localStorage.getItem('user');
+
+      let userpk = user;
+
+      if (String(pokemonData.user) !== userpk && userpk!==0) {
           
           const fetchUserPokemon = async (userpk) => {
+          console.log(user)
           const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
             method: 'GET',
           })
@@ -30,8 +35,12 @@ function App() {
           // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
           }
           fetchUserPokemon(userpk)
+
+          .catch((error)=> {
+            console.error('Error:', error);
+          } )
       }
-  });
+  }, [user]);
 
   const getPokemonData = async (id) => {
       fetch(`http://localhost:8000/api/pokemon/${id}`)
@@ -100,10 +109,18 @@ function App() {
  const handleLogin = () => {
    setLoggedIn(true)
    console.log("logged in")
+   //console.log("check loggedIn ", loggedIn)
  }
 
  const handleLogout = () => {
    setLoggedIn(false)
+   console.log("logged out")
+ }
+
+ const handleUser = (pk) => {
+   setUser(pk)
+   //console.log("pk is now ", user)
+   //console.log("user is now ", user)
  }
 
 
@@ -111,7 +128,7 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
+        <Header handleLogout={handleLogout} />
         <Route path='/' exact>
           <LandingPage/>
         </Route>
@@ -119,7 +136,7 @@ function App() {
           <Register/>
         </Route>
         <Route path='/log_in' exact>
-          <Login loggedIn={loggedIn} handleLogin={handleLogin} />
+          <Login loggedIn={loggedIn} handleLogin={handleLogin} user={user} handleUser={(pk) => handleUser(pk)} />
         </Route>
         <Route path='/about' exact>
           <About/>

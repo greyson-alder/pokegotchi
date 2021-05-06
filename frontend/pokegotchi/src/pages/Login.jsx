@@ -33,12 +33,13 @@ const Login = (props) => {
                 localStorage.setItem('user', data.user.pk)
                 localStorage.setItem('loggedIn', true)
                 props.handleLogin()
+                props.handleUser(data.user.pk)
 
                 //comment
                 // if owner has pokemon go to play
 
                 //else create_pokemon
-                history.push("/")
+                history.push("/play")
             })
             .catch((error) => {
             console.error('Error:', error);

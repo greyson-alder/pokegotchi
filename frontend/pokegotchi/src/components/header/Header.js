@@ -1,30 +1,46 @@
 import React from 'react'
 import "./header.css"
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 
 
-const Header = () => {
+const Header = (props) => {
 
-    // not working properly
-    // let userLoggedIn = localStorage.getItem("loggedIn")
+    let history = useHistory();
+
+    const logout = async () => {
+        await fetch('http://localhost:8000/api/dj-rest-auth/logout/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            })
+            .then(response => {
+                if(!response.ok){
+                    throw new Error("Not 2xx response")
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Success:', data);
+                
+                props.handleLogout()
+
+                history.push("/")
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+        });
+
+    }
 
     
-    // function handleLogOut(){
-    //     if (userLoggedIn===true){
-    //         console.log("logged in, proceeding to be logged out")
-    //         localStorage.removeItem('loggedIn')
-    //         userLoggedIn = false
-    //     }else{
-    //     console.log("already logged out ", userLoggedIn)
-    //     }
-    // }
 
     return (
         <div className="headerWrapper">
             <div className="header">
                 <Link to="/" className="titleLink">Pokégotchi</Link>
-                <button className="logOutBtn" /*onClick={handleLogOut}*/>Log Out</button>
+                <button className="logOutBtn" onClick={logout}>Log Out</button>
             </div>
         </div>
     )
