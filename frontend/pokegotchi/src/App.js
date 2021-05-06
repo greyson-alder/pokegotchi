@@ -39,7 +39,7 @@ function App() {
             console.error('Error:', error);
           } )
       }
-  }, [user]);
+  }, [user, pokemonData.user]);
 
   const updatePokemon = async (id) => {
     fetch(`http://localhost:8000/gameupdate/${id}`)

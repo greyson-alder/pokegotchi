@@ -28,7 +28,6 @@ class PokemonList(viewsets.ModelViewSet):
     serializer_class = PokemonSerializer
 
 
-
 class PokemonDetails(viewsets.ModelViewSet):
     """
     Lists details about a Pokemon
@@ -43,6 +42,7 @@ class PokemonDetails(viewsets.ModelViewSet):
             return Pokemon.objects.get(pk=pk)
         except Pokemon.DoesNotExist:
             raise Http404
+
     
     # update pokemon hunger by giving json body to be {"add_hunger": "value","user": pk}
     @action(detail=True, methods=['post'])
@@ -76,8 +76,6 @@ class PokemonDetails(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    
 
 class UserList(GenericAPIView):
     """
@@ -165,7 +163,6 @@ class GameUpdate(APIView):
             print("YOUR POKEMON DIED ===============================================================")
 
     def get(self, request, pk, format=None):
-
         new_age = self.increase_age(pk)
         new_hunger = self.update_hunger(pk)
         new_happiness = self.update_happiness(pk)
