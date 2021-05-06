@@ -65,7 +65,10 @@ REST_FRAMEWORK = {
     'rest_framework.parsers.JSONParser',
     'rest_framework.parsers.FormParser',
     'rest_framework.parsers.MultiPartParser',
-)
+    ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
 }
 
 REST_USE_JWT = True

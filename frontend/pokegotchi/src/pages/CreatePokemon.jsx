@@ -32,7 +32,7 @@ function CreatePokemon() {
             })
             .then(data => {
                 console.log('Success:', data);
-                history.push("/log_in")
+                history.push("/play")
             })
             .catch((error) => {
             console.error('Error:', error);

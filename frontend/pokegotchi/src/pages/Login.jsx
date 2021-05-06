@@ -31,7 +31,11 @@ function Login() {
                 console.log('Success:', data);
                 //console.log('userpk:', data.user.pk, 'access_token: ', data.access_token  );
                 localStorage.setItem('user', data.user.pk)
-                //localStorage.setItem('loggedIn', true)
+                localStorage.setItem('loggedIn', true)
+                //comment
+                // if owner has pokemon go to play
+
+                //else create_pokemon
                 history.push("/create_pokemon")
             })
             .catch((error) => {
