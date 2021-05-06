@@ -116,7 +116,7 @@ function App() {
         <Route path='/play' exact>
           <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
           <div className="tempData">
-            <PokemonData pokemonData={pokemonData}/>
+            {/* <PokemonData pokemonData={pokemonData}/> */}
             <button onClick={() => updatePokemon(pokemonData.return_pokemon_id)}>Click Me!</button>
           </div>
         </Route>
