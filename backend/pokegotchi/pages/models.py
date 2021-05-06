@@ -7,7 +7,7 @@ from datetime import datetime
 
 class User(AbstractUser):
     def __str__(self):
-        return f'user_id:{self.id}'
+        return f'{self.id}'
 
 # Create your models here.
 class Pokemon(models.Model):
