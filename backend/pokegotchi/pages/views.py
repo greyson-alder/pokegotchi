@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from decimal import Decimal
 
 from datetime import datetime
@@ -32,8 +33,10 @@ class PokemonDetails(viewsets.ModelViewSet):
     """
     Lists details about a Pokemon
     """
+    #permission_classes = [IsAuthenticated]
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
+
 
     def get_pokemon(self, pk):
         try:
@@ -123,25 +126,30 @@ class GameUpdate(APIView):
 
     def increase_age(self, pk):
         age = self.get_pokemon(pk).age
-        age += 1
-        print("The pokemon's age is: ", age)
+        if self.get_pokemon(pk).alive:
+            age += 1
+            print("The pokemon's age is: ", age)
         return age
 
     def update_hunger(self, pk):
         hunger = self.get_pokemon(pk).hunger
         hunger_chance = random.randint(0, 1)
-        if hunger_chance:
+        if self.get_pokemon(pk).age >= 5 and hunger_chance and hunger > 0 :
             hunger -= 10
-            print("HUNGER ================================= (hunger decreasing by 1)")
+            if hunger < 0 :
+                hunger = 0
+            print("HUNGER ================================= (hunger decreasing by 10)")
         return hunger
 
     def update_happiness(self, pk):
         hunger = self.get_pokemon(pk).hunger
         happiness = self.get_pokemon(pk).happiness
         happiness_chance = random.randint(1, 102)
-        if (happiness_chance < (100-hunger)):
+        if self.get_pokemon(pk).age >= 5 and (happiness_chance < (100-hunger)) and happiness > 0 :
             happiness -= 10
-            print("HAPPINESS ================================= (happiness decreasing by 1)")
+            if happiness < 0 :
+                happiness = 0
+            print("HAPPINESS ================================= (happiness decreasing by 10)")
         return happiness
 
     def update_alive(self, pk, new_hunger):
