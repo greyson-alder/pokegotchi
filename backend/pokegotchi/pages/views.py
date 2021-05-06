@@ -140,38 +140,38 @@ class UserDetails(GenericAPIView):
 
 class GameUpdate(APIView):
 
-    def get_pokemon(self, pk):
+    def get_pokemon(self, pokemon_id):
         try:
-            return Pokemon.objects.get(pk=pk)
+            return Pokemon.objects.get(pk=pokemon_id)
         except Pokemon.DoesNotExist:
             raise Http404
 
-    def increase_age(self):
-        age = self.get_pokemon(1).age
+    def increase_age(self, pk):
+        age = self.get_pokemon(pk).age
         age += 1
         print("The pokemon's age is: ", age)
         return age
 
-    def update_hunger(self):
-        hunger = self.get_pokemon(1).hunger
+    def update_hunger(self, pk):
+        hunger = self.get_pokemon(pk).hunger
         hunger_chance = random.randint(0, 1)
         if hunger_chance:
             hunger -= 10
             print("HUNGER ================================= (hunger decreasing by 1)")
         return hunger
 
-    def update_happiness(self):
-        hunger = self.get_pokemon(1).hunger
-        happiness = self.get_pokemon(1).happiness
+    def update_happiness(self, pk):
+        hunger = self.get_pokemon(pk).hunger
+        happiness = self.get_pokemon(pk).happiness
         happiness_chance = random.randint(1, 102)
         if (happiness_chance < (100-hunger)):
             happiness -= 10
             print("HAPPINESS ================================= (happiness decreasing by 1)")
         return happiness
 
-    def update_alive(self, new_hunger):
-        age = self.get_pokemon(1).age
-        alive = self.get_pokemon(1).alive
+    def update_alive(self, pk, new_hunger):
+        age = self.get_pokemon(pk).age
+        alive = self.get_pokemon(pk).alive
         alive_chance = random.randint(1, 101)
         if ((alive_chance + 30) < age) or (new_hunger < 1):
             alive = False
@@ -181,18 +181,20 @@ class GameUpdate(APIView):
         if isAlive == False:
             print("YOUR POKEMON DIED ===============================================================")
 
-    def get(self, request, format=None):
+    def get(self, request, pk, format=None):
         
         #PokemonDetails.add_hunger(pk=1, request=-1)
 
-        new_age = self.increase_age()
-        new_hunger = self.update_hunger()
-        new_happiness = self.update_happiness()
-        update_alive = self.update_alive(new_hunger)
+        new_age = self.increase_age(pk)
+        new_hunger = self.update_hunger(pk)
+        new_happiness = self.update_happiness(pk)
+        update_alive = self.update_alive(pk, new_hunger)
 
         self.check_alive(update_alive)
 
-        pokemon_data = self.get_pokemon(1)
+        pokemon_data = self.get_pokemon(pk)
+        user = pokemon_data.user
+        print(user)
         print(pokemon_data)
         
         time_now = datetime.now()
@@ -202,12 +204,12 @@ class GameUpdate(APIView):
         serializer = PokemonSerializer(
             pokemon_data, 
             data={
-                "func_time": time_now, 
-                "user": 1,
+                "func_time": time_now,
                 "age": new_age,
                 "hunger": new_hunger,
                 "happiness": new_happiness,
-                "alive": update_alive
+                "alive": update_alive,
+                "user": 3
                 }
         )
         

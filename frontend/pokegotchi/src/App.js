@@ -40,7 +40,7 @@ function App() {
   }
 
   const updatePokemon = async () => {
-    fetch("http://localhost:8000/gameupdate")
+    fetch(`http://localhost:8000/gameupdate/3`)
     .then(response => response.json())
     .then(data => setPokemonData(data))
   }
@@ -115,10 +115,10 @@ function App() {
         </Route>
         <Route path='/play' exact>
           <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
-          {/* <div className="tempData">
+          <div className="tempData">
             <PokemonData pokemonData={pokemonData}/>
             <button onClick={updatePokemon}>Click Me!</button>
-          </div> */}
+          </div>
         </Route>
         <Route path='/create_pokemon' exact>
           <CreatePokemon/>

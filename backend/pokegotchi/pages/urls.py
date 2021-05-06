@@ -60,7 +60,7 @@ urlpatterns = [
     ),
     #path('swagger/', schema_view),
     #path('swagger/', ),
-    path("gameupdate", views.GameUpdate.as_view()),
+    path("gameupdate/<int:pk>", views.GameUpdate.as_view()),
     path('api/pokemon/user/<int:pk>', views.UsersPokemon.as_view())
 
 
