@@ -4,6 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, GenericAPIView
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from decimal import Decimal
 
 from datetime import datetime
@@ -42,8 +43,10 @@ class PokemonDetails(viewsets.ModelViewSet):
     """
     Lists details about a Pokemon
     """
+    #permission_classes = [IsAuthenticated]
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
+
 
     def get_pokemon(self, pk):
         try:
