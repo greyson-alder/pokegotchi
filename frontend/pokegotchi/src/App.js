@@ -27,7 +27,7 @@ function App() {
           })
           const data = await res.json()
           setPokemonData(data)
-          console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
+          // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
           }
           fetchUserPokemon(userpk)
       }
@@ -39,8 +39,8 @@ function App() {
       .then(data => setPokemonData(data))
   }
 
-  const updatePokemon = async () => {
-    fetch(`http://localhost:8000/gameupdate/3`)
+  const updatePokemon = async (id) => {
+    fetch(`http://localhost:8000/gameupdate/${id}`)
     .then(response => response.json())
     .then(data => setPokemonData(data))
   }
@@ -117,7 +117,7 @@ function App() {
           <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
           <div className="tempData">
             <PokemonData pokemonData={pokemonData}/>
-            <button onClick={updatePokemon}>Click Me!</button>
+            <button onClick={() => updatePokemon(pokemonData.return_pokemon_id)}>Click Me!</button>
           </div>
         </Route>
         <Route path='/create_pokemon' exact>

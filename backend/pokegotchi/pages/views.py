@@ -193,8 +193,8 @@ class GameUpdate(APIView):
         self.check_alive(update_alive)
 
         pokemon_data = self.get_pokemon(pk)
-        user = pokemon_data.user
-        print(user)
+        user = pokemon_data.user.id
+        print(type(user))
         print(pokemon_data)
         
         time_now = datetime.now()
@@ -209,7 +209,7 @@ class GameUpdate(APIView):
                 "hunger": new_hunger,
                 "happiness": new_happiness,
                 "alive": update_alive,
-                "user": 3
+                "user": user
                 }
         )
         
