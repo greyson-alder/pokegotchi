@@ -19,18 +19,18 @@ function App() {
 
   useEffect(() => {
     let userpk = localStorage.getItem('user');
-      // if (String(pokemonData.user) !== userpk) {
+      if (String(pokemonData.user) !== userpk) {
           
-      //     const fetchUserPokemon = async (userpk) => {
-      //     const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
-      //       method: 'GET',
-      //     })
-      //     const data = await res.json()
-      //     setPokemonData(data)
-      //     // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
-      //     }
-      //     fetchUserPokemon(userpk)
-      // }
+          const fetchUserPokemon = async (userpk) => {
+          const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
+            method: 'GET',
+          })
+          const data = await res.json()
+          setPokemonData(data)
+          // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
+          }
+          fetchUserPokemon(userpk)
+      }
   });
 
   const getPokemonData = async (id) => {

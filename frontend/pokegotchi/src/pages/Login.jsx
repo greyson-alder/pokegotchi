@@ -49,7 +49,12 @@ const Login = (props) => {
         e.preventDefault();
         console.log("login clicked")
         console.log(props.loggedIn)
-        login();
+        if (!props.loggedIn){
+            login();
+        }
+        else {
+            console.log("already logged in")
+        }
     }
     
     return (

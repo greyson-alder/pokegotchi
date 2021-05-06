@@ -43,7 +43,7 @@ class PokemonDetails(viewsets.ModelViewSet):
     """
     Lists details about a Pokemon
     """
-    permission_classes = [IsAuthenticated]
+    #permission_classes = [IsAuthenticated]
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
 
