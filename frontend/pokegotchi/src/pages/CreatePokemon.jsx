@@ -31,8 +31,9 @@ function CreatePokemon(props) {
             })
             .then(data => {
                 console.log('Success:', data);
-                props.refreshUserPokemon()
-                history.push("/")
+                props.refreshUserPokemon(() => {
+                    history.push("/")
+                })
             })
             .catch((error) => {
             console.error('Error:', error);
