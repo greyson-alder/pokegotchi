@@ -23,8 +23,8 @@ class Pokemon(models.Model):
     name = models.CharField(max_length=200, null=True)
     age = models.DecimalField(decimal_places=2, max_digits=10, default=0)
     pokemon = models.CharField(max_length=200, choices=POKEMON, default=BULBASAUR)
-    happiness = models.DecimalField(decimal_places=2, max_digits=10, default=100)
-    hunger = models.DecimalField(decimal_places=2, max_digits=10, default=100)
+    happiness = models.DecimalField(decimal_places=2, max_digits=10, default=50)
+    hunger = models.DecimalField(decimal_places=2, max_digits=10, default=50)
     func_time = models.DateTimeField(default=datetime.now, blank=True)
     alive = models.BooleanField(default=True)
 
