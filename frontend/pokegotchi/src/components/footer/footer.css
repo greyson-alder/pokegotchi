@@ -8,15 +8,35 @@
 
 .footer {
     background-color: #50514F;
-    color: white;
     display: flex;
     flex: 1 1 auto;
+    flex-direction: column;
+    align-items: center;
+    max-width: 480px;
+    margin: 0 auto;
+    border-left: 0.2rem black solid;
+    border-right: 0.2rem black solid;
+}
+
+.footerBottom {
+    color: white;
     justify-content: space-between;
+    display: flex;
     bottom: 0;
-    margin: auto auto 1rem;
+    width: 100%;
     max-width: 500px;
+    margin: auto auto 1rem;
+    padding: 0 1rem;
 }
 
 .footer .aboutLink {
     color: white;
+}
+
+.footer .logo {
+    width: 3rem;
+    height: 3rem;
+    border: 0.5rem solid lightgrey;
+    margin: 2rem 0;
+    float: left;
 }

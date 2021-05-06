@@ -15,21 +15,32 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 function App() {
   
   const [pokemonData, setPokemonData] = useState(false);
+  
 
   useEffect(() => {
-      if (!pokemonData) {
-          getPokemonData()
+    let userpk = localStorage.getItem('user');
+      if (String(pokemonData.user) !== userpk) {
+          
+          const fetchUserPokemon = async (userpk) => {
+          const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
+            method: 'GET',
+          })
+          const data = await res.json()
+          setPokemonData(data)
+          // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
+          }
+          fetchUserPokemon(userpk)
       }
   });
 
-  const getPokemonData = async () => {
-      fetch("http://localhost:8000/api/pokemon/1")
+  const getPokemonData = async (id) => {
+      fetch(`http://localhost:8000/api/pokemon/${id}`)
       .then(response => response.json())
       .then(data => setPokemonData(data))
   }
 
-  const updatePokemon = async () => {
-    fetch("http://localhost:8000/gameupdate")
+  const updatePokemon = async (id) => {
+    fetch(`http://localhost:8000/gameupdate/${id}`)
     .then(response => response.json())
     .then(data => setPokemonData(data))
   }
@@ -104,10 +115,10 @@ function App() {
         </Route>
         <Route path='/play' exact>
           <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
-          {/* <div className="tempData">
-            <PokemonData pokemonData={pokemonData}/>
-            <button onClick={updatePokemon}>Click Me!</button>
-          </div> */}
+          <div className="tempData">
+            {/* <PokemonData pokemonData={pokemonData}/> */}
+            <button onClick={() => updatePokemon(pokemonData.return_pokemon_id)}>Click Me!</button>
+          </div>
         </Route>
         <Route path='/create_pokemon' exact>
           <CreatePokemon/>
