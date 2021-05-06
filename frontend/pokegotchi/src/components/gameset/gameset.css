@@ -24,6 +24,7 @@
     flex: 1 0 auto;
     max-width: 400px;
     position: relative;
+    justify-content: center;
 }
 
 .pokemonImage.isDead {
@@ -130,4 +131,23 @@
 
 .happinessBarIcon {
     right: 0;
+}
+
+.resetBtn {
+    display: none;
+}
+
+.resetBtn.isDead {
+    display: flex;
+    background-color: black;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    border: 0.4rem solid black;
+}
+
+.resetBtn:hover {
+    background-color: darkslategrey;
 }

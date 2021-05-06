@@ -48,7 +48,7 @@ const Login = (props) => {
     function handleSubmit(e){
         e.preventDefault();
         console.log("login clicked")
-        console.log(props.loggedIn)
+        // console.log(props.loggedIn)
         if (!props.loggedIn){
             login();
         }

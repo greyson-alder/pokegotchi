@@ -11,7 +11,7 @@ import CreatePokemon from "./pages/CreatePokemon";
 import Header from "./components/header/Header"
 
 import { Redirect } from "react-router"
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 
 function App() {
   
@@ -24,6 +24,7 @@ function App() {
 
     if (userpk) {
       setUser(userpk)
+      setLoggedIn(true)
     }
   }, [])
 
@@ -33,7 +34,7 @@ function App() {
       if (String(pokemonData.user) !== user && user!==0) {
           
           const fetchUserPokemon = async (user) => {
-            console.log(user)
+            // console.log("The current user's ID is:", user)
             const res = await fetch(`http://localhost:8000/api/pokemon/user/${user}`, {
               method: 'GET',
             })
@@ -141,7 +142,24 @@ function App() {
    //console.log("user is now ", user)
  }
 
-
+ const deleteData = async (callback) => {
+  await fetch(`http://localhost:8000/api/pokemon/${pokemonData.return_pokemon_id}`, {
+      method: "DELETE",
+      headers: {
+          'Content-Type': 'application/json',
+      }, 
+      })
+      .then(response => {
+          if(!response.ok){
+              throw new Error("Not good Delete call")
+          }
+          setPokemonData(false)
+          callback()
+      })
+      .catch((error) => {
+      console.error('Error:', error);
+    });
+  }
 
   return (
     <div className="App">
@@ -166,7 +184,7 @@ function App() {
           <About/>
         </Route>
         <Route path='/play' exact>
-          <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness}/>
+          <Gameset pokemonData={pokemonData} addHunger={addHunger} addHappiness={addHappiness} deleteData={deleteData}/>
           <div className="tempData">
             {/* <PokemonData pokemonData={pokemonData}/> */}
             <button onClick={() => updatePokemon(pokemonData.return_pokemon_id)}>Click Me!</button>

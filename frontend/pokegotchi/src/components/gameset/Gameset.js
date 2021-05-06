@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import "./gameset.css"
+import { useHistory } from 'react-router-dom'
 
 const Gameset = (props) => {
 
     const [imageBase, setImageBase] = useState("");
+    let history = useHistory();
 
     useEffect(() => {
         var imageName = props.pokemonData.pokemon
@@ -39,6 +41,11 @@ const Gameset = (props) => {
         props.addHappiness();
     }
 
+    function handleDelete(){
+        console.log("Deleting Pokemon Data")
+        props.deleteData(()=>{history.push("/create_pokemon")});
+    }
+
     return (
         <div className="gameset">
             <h2>{props.pokemonData.name}</h2>
@@ -53,6 +60,7 @@ const Gameset = (props) => {
                     {/* ternary operator */}
                     <img className="image1" src={"/"+imageBase+"-1.png"} alt={props.pokemonData.pokemon} />
                     <img className="image2" src={"/"+imageBase+"-2.png"} alt={props.pokemonData.pokemon} />
+                    <button className={"resetBtn" + (props.pokemonData.alive ? "" : " isDead")} onClick={handleDelete}>Restart</button>
                 </div>
                 <div className="happinessBar bar">
                     <p className="statNumber">{String(parseInt(props.pokemonData.happiness))}</p>
