@@ -2,40 +2,20 @@ import Title from '../components/Title'
 import Button from '../components/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
-import Cookies from 'universal-cookie'
 
 import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
-const cookies = new Cookies()
+
 function CreatePokemon() {
     const [name, setName] = useState("");
     const [pokemon, setPokemon] = useState("");
-    const [user, setUser] = useState("");
+
     
 
     let history = useHistory();
 
     const choosePokemon = async () => {
-
-        // await fetch('http://localhost:8000/api/dj-rest-auth/user/', {
-        //     headers: {
-        //       'Content-Type': 'application/json',
-        //       'X-CSRF-TOKEN': cookies.get("csrftoken"),
-        //     },
-        //   })
-        //   .then(response => {
-        //     if(!response.ok){
-        //         throw new Error("Not 2xx response")
-        //     }
-        //     return response.json();
-        // })
-        //   .then(data => {
-        //     console.log('Success:', data);
-        //   })
-        //   .catch((error) => {
-        //     console.error('Error:', error);
-        //   });
         const userpk = localStorage.getItem('user');
         //console.log("userpk is: ", userpk)
 
@@ -68,7 +48,7 @@ function CreatePokemon() {
     }
     
     return (
-        <div className="landingPage">
+        <div className="loginPage">
             <div className="spacerLandingTop"></div>
             <div className="landingTitle">
                 <Title title="Create Pokemon" className="topTitle"/>
@@ -88,7 +68,7 @@ function CreatePokemon() {
                             <option value="Squirtle">Squirtle</option>
                         </Form.Control>   
                     </Form.Group> 
-                    <div className="landingButtons">
+                    <div className="landingButtonslogin">
                         <Button text="GO" className="landingButton" type="submit"/>
                     </div>
                 </Form>

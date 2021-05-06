@@ -27,11 +27,13 @@ code {
 /*Landing Page*/
 
 .landingPage {
-  background-color: khaki;
+  background-color:#fbeaa5;
 }
 
 .spacerLandingTop {
   height: 20vh;
+  background-image: url('https://i.pinimg.com/originals/5b/4d/83/5b4d8396a23986bac605d6c526992ba7.png');
+
 }
 
 .landingTitle {
@@ -75,10 +77,17 @@ code {
   align-items: center;
 }
 
+.logo {
+  margin: 0;
+  padding: 0;
+  height: 22em;
+}
+
 /*About Page*/
 
 .aboutPage {
   background-color: khaki;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/85117069-43a7-4365-9780-b931910ab183/d614wgy-59b89793-8a87-40b9-a4a5-e61d305123f5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODUxMTcwNjktNDNhNy00MzY1LTk3ODAtYjkzMTkxMGFiMTgzXC9kNjE0d2d5LTU5Yjg5NzkzLThhODctNDBiOS1hNGE1LWU2MWQzMDUxMjNmNS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.I3yo2MKzcYjwtonIPBxuumW_G6_n1tvc0VrbuIN9qas');
 }
 
 .aboutTitle {
@@ -93,6 +102,7 @@ code {
 
 .aboutText p{
   font-size: 5vh;
+  padding: 2em;
 }
 
 .aboutSpacer {
@@ -113,5 +123,29 @@ code {
 .formStyle {
   margin: 0 8%;
   padding: 1em;
+  background-color: #fbeaa5;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/85117069-43a7-4365-9780-b931910ab183/d614wgy-59b89793-8a87-40b9-a4a5-e61d305123f5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODUxMTcwNjktNDNhNy00MzY1LTk3ODAtYjkzMTkxMGFiMTgzXC9kNjE0d2d5LTU5Yjg5NzkzLThhODctNDBiOS1hNGE1LWU2MWQzMDUxMjNmNS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.I3yo2MKzcYjwtonIPBxuumW_G6_n1tvc0VrbuIN9qas');
+}
+
+.formStyler {
+  margin: 0 8%;
+  padding: 1em;
   background-color: khaki;
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/85117069-43a7-4365-9780-b931910ab183/d614wgy-59b89793-8a87-40b9-a4a5-e61d305123f5.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvODUxMTcwNjktNDNhNy00MzY1LTk3ODAtYjkzMTkxMGFiMTgzXC9kNjE0d2d5LTU5Yjg5NzkzLThhODctNDBiOS1hNGE1LWU2MWQzMDUxMjNmNS5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.I3yo2MKzcYjwtonIPBxuumW_G6_n1tvc0VrbuIN9qas');
+}
+
+.landingButtonslogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loginPager {
+  background-color: #fbeaa5;
+  background-image:('https://lh3.googleusercontent.com/proxy/9eAaILcS9AQ7Wz_xhwvkXlHJ7bUxudUDoplBYOV4J0aBNpe4qtIJtDof8G2K9Lgk-eYioh8_1CtgTKF4fnLCCOqExJJgEumCkg4')
+}
+
+.loginPage {
+  background-color: #fbeaa5;
+  background-image:('https://lh3.googleusercontent.com/proxy/9eAaILcS9AQ7Wz_xhwvkXlHJ7bUxudUDoplBYOV4J0aBNpe4qtIJtDof8G2K9Lgk-eYioh8_1CtgTKF4fnLCCOqExJJgEumCkg4')
 }

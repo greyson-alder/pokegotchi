@@ -3,7 +3,7 @@ import Button from '../components/Button'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 
-import React, { useContext, useState } from "react";
+import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
 
@@ -45,12 +45,12 @@ function Register() {
     }
     
     return (
-        <div className="landingPage">
+        <div className="loginPager">
             <div className="spacerLandingTop"></div>
             <div className="landingTitle">
                 <Title title="Sign up" className="topTitle"/>
             </div>
-            <div className="formStyle">
+            <div className="formStyler">
             <Form onSubmit={handleSubmit}>
                 <Form.Group>
                     <Form.Label>Username</Form.Label>
@@ -68,7 +68,7 @@ function Register() {
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control type="password" value={password2} placeholder="Password" onChange={(e) => setPassword2(e.target.value)}/>
                 </Form.Group>
-                <div className="landingButtons">
+                <div className="landingButtonslogin">
                     <Button text="SIGN UP" className="landingButton" type="submit"/>
                 </div>
             </Form>   
