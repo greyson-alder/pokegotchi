@@ -32,7 +32,6 @@ function App() {
           })
           const data = await res.json()
           setPokemonData(data)
-          // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
           }
           fetchUserPokemon(userpk)
 
@@ -41,12 +40,6 @@ function App() {
           } )
       }
   }, [user]);
-
-  const getPokemonData = async (id) => {
-      fetch(`http://localhost:8000/api/pokemon/${id}`)
-      .then(response => response.json())
-      .then(data => setPokemonData(data))
-  }
 
   const updatePokemon = async (id) => {
     fetch(`http://localhost:8000/gameupdate/${id}`)
@@ -74,9 +67,6 @@ function App() {
               }
               return response.json();
           })
-          // .then(data => {
-          //     console.log('Successfully added hunger:', data);
-          // })
           .then(data => setPokemonData(data))
           .catch((error) => {
           console.error('Error:', error);

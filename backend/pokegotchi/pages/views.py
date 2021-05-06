@@ -27,17 +27,6 @@ class PokemonList(viewsets.ModelViewSet):
     queryset = Pokemon.objects.all()
     serializer_class = PokemonSerializer
 
-    # def get(self, request, format=None):
-    #     pokemon = Pokemon.objects.all()
-    #     serializer = PokemonSerializer(pokemon, many=True)
-    #     return Response(serializer.data)
-
-    # def post(self, request, format=None):
-    #     serializer = PokemonSerializer(data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data, status=status.HTTP_201_CREATED)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class PokemonDetails(viewsets.ModelViewSet):
     """
@@ -54,10 +43,6 @@ class PokemonDetails(viewsets.ModelViewSet):
         except Pokemon.DoesNotExist:
             raise Http404
 
-    # def get(self, request, pk, format=None):
-    #     pokemon = self.get_pokemon(pk)
-    #     serializer = PokemonSerializer(pokemon)
-    #     return Response(serializer.data)
     
     # update pokemon hunger by giving json body to be {"add_hunger": "value","user": pk}
     @action(detail=True, methods=['post'])
@@ -91,18 +76,6 @@ class PokemonDetails(viewsets.ModelViewSet):
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    # def put(self, request, pk, format=None):
-    #     pokemon = self.get_pokemon(pk)
-    #     serializer = PokemonSerializer(pokemon, data=request.data)
-    #     if serializer.is_valid():
-    #         serializer.save()
-    #         return Response(serializer.data)
-    #     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-
-
-
 
 class UserList(GenericAPIView):
     """
@@ -170,7 +143,7 @@ class GameUpdate(APIView):
         hunger = self.get_pokemon(pk).hunger
         happiness = self.get_pokemon(pk).happiness
         happiness_chance = random.randint(1, 102)
-        if self.get_pokemon(pk).age >= 5 and (happiness_chance < (100-hunger)) and happiness > 0 :
+        if self.get_pokemon(pk).age >= 5 and (happiness_chance < (100-hunger)) and happiness > 0 and self.get_pokemon(pk).alive:
             happiness -= 10
             if happiness < 0 :
                 happiness = 0
@@ -190,9 +163,6 @@ class GameUpdate(APIView):
             print("YOUR POKEMON DIED ===============================================================")
 
     def get(self, request, pk, format=None):
-        
-        #PokemonDetails.add_hunger(pk=1, request=-1)
-
         new_age = self.increase_age(pk)
         new_hunger = self.update_hunger(pk)
         new_happiness = self.update_happiness(pk)
@@ -202,12 +172,7 @@ class GameUpdate(APIView):
 
         pokemon_data = self.get_pokemon(pk)
         user = pokemon_data.user.id
-        print(type(user))
-        print(pokemon_data)
-        
         time_now = datetime.now()
-        #time_now = time_now.isoformat()
-        #time_now = json.dumps(time_now)
 
         serializer = PokemonSerializer(
             pokemon_data, 
