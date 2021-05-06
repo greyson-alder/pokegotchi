@@ -7,7 +7,7 @@ import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
 
-function Login() {
+const Login = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -31,7 +31,14 @@ function Login() {
                 console.log('Success:', data);
                 //console.log('userpk:', data.user.pk, 'access_token: ', data.access_token  );
                 localStorage.setItem('user', data.user.pk)
-                history.push("/play")
+                localStorage.setItem('loggedIn', true)
+                props.handleLogin()
+
+                //comment
+                // if owner has pokemon go to play
+
+                //else create_pokemon
+                history.push("/")
             })
             .catch((error) => {
             console.error('Error:', error);
@@ -41,7 +48,13 @@ function Login() {
     function handleSubmit(e){
         e.preventDefault();
         console.log("login clicked")
-        login();
+        console.log(props.loggedIn)
+        if (!props.loggedIn){
+            login();
+        }
+        else {
+            console.log("already logged in")
+        }
     }
     
     return (

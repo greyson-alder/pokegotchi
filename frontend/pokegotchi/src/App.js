@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Route} from 'react-router-dom'
 function App() {
   
   const [pokemonData, setPokemonData] = useState(false);
-  
+  const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
     let userpk = localStorage.getItem('user');
@@ -97,6 +97,17 @@ function App() {
    }
  }
 
+ const handleLogin = () => {
+   setLoggedIn(true)
+   console.log("logged in")
+ }
+
+ const handleLogout = () => {
+   setLoggedIn(false)
+ }
+
+
+
   return (
     <div className="App">
       <Router>
@@ -108,7 +119,7 @@ function App() {
           <Register/>
         </Route>
         <Route path='/log_in' exact>
-          <Login/>
+          <Login loggedIn={loggedIn} handleLogin={handleLogin} />
         </Route>
         <Route path='/about' exact>
           <About/>

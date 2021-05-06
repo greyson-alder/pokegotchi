@@ -10,12 +10,10 @@ import { useHistory } from "react-router-dom";
 function CreatePokemon() {
     const [name, setName] = useState("");
     const [pokemon, setPokemon] = useState("");
-
-    
-
     let history = useHistory();
 
     const choosePokemon = async () => {
+
         const userpk = localStorage.getItem('user');
         //console.log("userpk is: ", userpk)
 
@@ -34,7 +32,7 @@ function CreatePokemon() {
             })
             .then(data => {
                 console.log('Success:', data);
-                history.push("/log_in")
+                history.push("/play")
             })
             .catch((error) => {
             console.error('Error:', error);
