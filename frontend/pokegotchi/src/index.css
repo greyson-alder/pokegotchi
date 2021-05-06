@@ -27,13 +27,12 @@ code {
 /*Landing Page*/
 
 .landingPage {
-  background-color:#fbeaa5;
+  background-color: transparent;
+  background-image: url('https://i.pinimg.com/originals/5b/4d/83/5b4d8396a23986bac605d6c526992ba7.png');
 }
 
 .spacerLandingTop {
-  height: 20vh;
-  background-image: url('https://i.pinimg.com/originals/5b/4d/83/5b4d8396a23986bac605d6c526992ba7.png');
-
+  height: 8rem;
 }
 
 .landingTitle {
@@ -47,40 +46,52 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 3%;
-  padding-bottom: 3%;
+  padding-top: 1rem;
+  /* padding-bottom: 3%; */
 }
 
 .topTitle {
   font-size:6vh;
+  font-family: caveat, cursive;
+  margin-bottom: 0;
 }
 
 .bottomTitle {
   font-size: 8vh;
+  font-family: caveat, cursive;
+  margin-bottom: 0;
 }
 
 .landingButton {
   background-color: white;
   border-style: solid;
   border-color: black;
-  border-width: 0.75vh;
-  height: 8vh;
-  width: 15vw;
-  font-size: 3vh;
-  margin: 2vh;
+  border-width: 0.4rem;
+  /* height: 8vh;
+  width: 15vw; */
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 1.5rem;
   cursor: pointer;
+  padding: 1rem 2rem;
+}
+
+.landingButton:hover {
+  background-color: lightgrey;
 }
 
 .landingButtons {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  height: 8rem;
 }
 
 .logo {
   margin: 0;
   padding: 0;
-  height: 22em;
+  height: 20rem;
 }
 
 /*About Page*/
