@@ -7,14 +7,13 @@ import React, {useState } from "react";
 //import { Link } from 'react-router-dom'
 import { useHistory } from "react-router-dom"; 
 
-function CreatePokemon() {
+function CreatePokemon(props) {
     const [name, setName] = useState("");
     const [pokemon, setPokemon] = useState("");
     let history = useHistory();
 
     const choosePokemon = async () => {
 
-        const userpk = localStorage.getItem('user');
         //console.log("userpk is: ", userpk)
 
         await fetch('http://localhost:8000/api/pokemon', {
@@ -22,7 +21,7 @@ function CreatePokemon() {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({name:name, pokemon:pokemon, user: userpk}),
+            body: JSON.stringify({name:name, pokemon:pokemon, user: props.userID}),
             })
             .then(response => {
                 if(!response.ok){
@@ -32,7 +31,8 @@ function CreatePokemon() {
             })
             .then(data => {
                 console.log('Success:', data);
-                history.push("/play")
+                props.refreshUserPokemon()
+                history.push("/")
             })
             .catch((error) => {
             console.error('Error:', error);

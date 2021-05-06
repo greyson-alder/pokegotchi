@@ -10,6 +10,7 @@ import Register from "./pages/Register"
 import CreatePokemon from "./pages/CreatePokemon";
 import Header from "./components/header/Header"
 
+import { Redirect } from "react-router"
 import { BrowserRouter as Router, Route} from 'react-router-dom'
 
 function App() {
@@ -19,28 +20,42 @@ function App() {
   const [user, setUser] = useState(0);
 
   useEffect(() => {
-    // userpk = localStorage.getItem('user');
+    let userpk = sessionStorage.getItem("userID")
 
-      let userpk = user;
+    if (userpk) {
+      setUser(userpk)
+    }
+  }, [])
 
-      if (String(pokemonData.user) !== userpk && userpk!==0) {
+  useEffect(() => {
+      // let userpk = user;
+
+      if (String(pokemonData.user) !== user && user!==0) {
           
-          const fetchUserPokemon = async (userpk) => {
-          console.log(user)
-          const res = await fetch(`http://localhost:8000/api/pokemon/user/${userpk}`, {
-            method: 'GET',
-          })
-          const data = await res.json()
-          setPokemonData(data)
-          // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
+          const fetchUserPokemon = async (user) => {
+            console.log(user)
+            const res = await fetch(`http://localhost:8000/api/pokemon/user/${user}`, {
+              method: 'GET',
+            })
+            const data = await res.json()
+            setPokemonData(data)
+            // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
           }
-          fetchUserPokemon(userpk)
+          fetchUserPokemon(user)
 
           .catch((error)=> {
             console.error('Error:', error);
           } )
       }
-  }, [user]);
+  }, [pokemonData.user, user]);
+
+  const refreshUserPokemon = async () => {
+    const res = await fetch(`http://localhost:8000/api/pokemon/user/${user}`, {
+      method: 'GET',
+    })
+    const data = await res.json()
+    setPokemonData(data)
+  }
 
   const getPokemonData = async (id) => {
       fetch(`http://localhost:8000/api/pokemon/${id}`)
@@ -115,6 +130,9 @@ function App() {
  const handleLogout = () => {
    setLoggedIn(false)
    console.log("logged out")
+   sessionStorage.removeItem("userID")
+   setPokemonData(false)
+   setUser(0)
  }
 
  const handleUser = (pk) => {
@@ -129,9 +147,15 @@ function App() {
     <div className="App">
       <Router>
         <Header handleLogout={handleLogout} />
-        <Route path='/' exact>
-          <LandingPage/>
-        </Route>
+        <Route path='/' exact render={() => (
+          (loggedIn && pokemonData) 
+            ? <Redirect to='/play'/>
+            : (loggedIn)
+            ? <Redirect to='/create_pokemon'/>
+            : <LandingPage/>
+            // <Redirect to='/login' />
+          )}
+        />
         <Route path='/create_account' exact>
           <Register/>
         </Route>
@@ -149,7 +173,7 @@ function App() {
           </div>
         </Route>
         <Route path='/create_pokemon' exact>
-          <CreatePokemon/>
+          <CreatePokemon userID={user} refreshUserPokemon={refreshUserPokemon}/>
         </Route>
         <Footer  className="footer-brown"/>
       </Router>

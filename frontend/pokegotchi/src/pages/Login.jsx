@@ -30,8 +30,7 @@ const Login = (props) => {
             .then(data => {
                 console.log('Success:', data);
                 //console.log('userpk:', data.user.pk, 'access_token: ', data.access_token  );
-                localStorage.setItem('user', data.user.pk)
-                localStorage.setItem('loggedIn', true)
+                sessionStorage.setItem('userID', data.user.pk)
                 props.handleLogin()
                 props.handleUser(data.user.pk)
 
@@ -39,7 +38,7 @@ const Login = (props) => {
                 // if owner has pokemon go to play
 
                 //else create_pokemon
-                history.push("/play")
+                history.push("/")
             })
             .catch((error) => {
             console.error('Error:', error);
