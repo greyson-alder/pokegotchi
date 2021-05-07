@@ -38,9 +38,7 @@ const Login = (props) => {
                 // if owner has pokemon go to play
 
                 //else create_pokemon
-                props.refreshUserPokemon(() => {
-                    history.push("/")
-                })
+                history.push("/")
             })
             .catch((error) => {
             console.error('Error:', error);

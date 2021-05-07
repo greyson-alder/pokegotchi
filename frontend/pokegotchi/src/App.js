@@ -38,10 +38,8 @@ function App() {
             const res = await fetch(`http://localhost:8000/api/pokemon/user/${user}`, {
               method: 'GET',
             })
-            if (res.ok) {
-              const data = await res.json()
-              setPokemonData(data)
-            }
+            const data = await res.json()
+            setPokemonData(data)
             // console.log(String(pokemonData.user), userpk, String(pokemonData.user) !== userpk)
           }
           fetchUserPokemon(user)
@@ -52,16 +50,12 @@ function App() {
       }
   }, [pokemonData.user, user]);
 
-  const refreshUserPokemon = async (callback) => {
+  const refreshUserPokemon = async () => {
     const res = await fetch(`http://localhost:8000/api/pokemon/user/${user}`, {
       method: 'GET',
     })
-    if (res.ok) {
-      const data = await res.json()
-      setPokemonData(data)
-      
-    }   
-    callback() 
+    const data = await res.json()
+    setPokemonData(data)
   }
 
   const updatePokemon = async (id) => {
@@ -177,7 +171,7 @@ function App() {
           <Register/>
         </Route>
         <Route path='/log_in' exact>
-          <Login loggedIn={loggedIn} handleLogin={handleLogin} user={user} handleUser={(pk) => handleUser(pk)} refreshUserPokemon={refreshUserPokemon} />
+          <Login loggedIn={loggedIn} handleLogin={handleLogin} user={user} handleUser={(pk) => handleUser(pk)} />
         </Route>
         <Route path='/about' exact>
           <About/>
