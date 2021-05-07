@@ -47,7 +47,7 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1rem;
+  padding: 1rem 0;
   /* padding-bottom: 3%; */
 }
 
@@ -103,17 +103,17 @@ code {
 }
 
 .aboutTitle {
-  font-size: 8vh;
+  font-size: 4rem;
   text-align: center;
 }
 
 .aboutText {
   background-color: white;
-  height: 46vh;
+  height: 100%;
 }
 
-.aboutText p{
-  font-size: 5vh;
+.aboutText p {
+  font-size: 2rem;
   padding: 2em;
 }
 

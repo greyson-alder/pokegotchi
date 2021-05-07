@@ -70,10 +70,12 @@ function App() {
     .then(data => setPokemonData(data))
   }
 
+  // ======== Something here is calling it's own (and affecting) the state of the id
   //   useEffect(() => {
-  //     const interval = window.setInterval(updatePokemon, 5000)
+  //     const interval = window.setInterval(updatePokemon(pokemonData.return_pokemon_id), 5000)
+  //     console.log("pokemon id is ", interval)
   //     return () => {window.clearInterval(interval)} 
-  // });
+  // }, [pokemonData.return_pokemon_id]);
 
    const addHunger = async () => {
      if (pokemonData.alive && pokemonData.hunger <= 95) {
